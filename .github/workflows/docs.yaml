@@ -1,0 +1,70 @@
+name: docs
+on:
+  push:
+    branches:
+       - main
+
+jobs:
+  eva_build_docs:
+    name: Build eva documentation
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+
+    # Setup Python
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    # Update conda
+    - name: Update conda
+      run: conda update -n base -c defaults conda
+
+    # Install pip
+    - name: Install pip
+      run: conda install pip
+
+    # Install cartopy
+    - name: Install cartopy
+      run: conda install -c conda-forge cartopy
+
+    # Clone the eva code
+    - name: Clone eva repo
+      uses: actions/checkout@v2
+      with:
+        lfs: true
+
+    # Install eva
+    - name: Upgrade pip
+      run: $CONDA/bin/pip3 install --upgrade pip
+    - name: Install eva and dependencies
+      run: $CONDA/bin/pip3 install --use-deprecated=legacy-resolver -r requirements-github.txt --user .
+    - name: Put eva in the path
+      run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+    # Install ipykernel
+    - name: Install ipykernel
+      run: $CONDA/bin/pip3 install ipykernel
+
+    # Run the eva test suite
+    - name: Run eva notebook tests
+      run: eva_tests notebook
+
+    # Generate rst files for jupyter notebooks
+    - name: generate rst
+      run: nbsite generate-rst --org asewnath --project-name eva-docs --examples src/eva/tests/notebooks
+
+    # Build html files for documentation
+    - name: build docs
+      run: nbsite build --what=html --output=builtdocs --org asewnath --project-name eva-docs
+
+    # Deploy to gh-pages
+    - name: Deploy main
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./builtdocs
+        cname: asewnath.github.io/eva-docs
+        force_orphan: true
