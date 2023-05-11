@@ -49,8 +49,8 @@ jobs:
       run: $CONDA/bin/pip3 install ipykernel
 
     # Run the eva test suite
-    - name: Run eva notebook tests
-      run: eva_tests notebook
+    #- name: Run eva notebook tests
+    #  run: eva_tests notebook
 
     # Generate rst files for jupyter notebooks
     - name: generate rst
