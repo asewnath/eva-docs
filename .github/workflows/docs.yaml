@@ -54,7 +54,8 @@ jobs:
 
     # Generate rst files for jupyter notebooks
     - name: generate rst
-      run: nbsite generate-rst --org asewnath --project-name eva-docs --examples src/eva/tests/notebooks
+      #run: nbsite generate-rst --org asewnath --project-name eva-docs --examples src/eva/tests/notebooks
+      run: nbsite generate-rst --org asewnath --project-name eva-docs --examples examples
 
     # Build html files for documentation
     - name: build docs
