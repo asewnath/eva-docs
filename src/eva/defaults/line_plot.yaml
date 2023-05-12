@@ -1,7 +1,0 @@
-# Scatter class default schema
-markersize: 5
-color: 'darkgray'
-marker: 'o'
-alpha:
-label: 'Points'
-
