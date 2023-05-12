@@ -15,13 +15,10 @@
 import setuptools
 
 setuptools.setup(
-    name='eva',
-    version='1.3.4',
+    name='eva-docs',
     author='Community owned code',
     description='Evaluation and Verification of an Analysis',
-    url='https://github.com/JCSDA-internal/eva',
-    package_dir={'': 'src'},
-    packages=setuptools.find_packages('src'),
+    url='https://github.com/asewnath/eva-docs',
     classifiers=[
         'Development Status :: 1 - Planning',
         'Environment :: Console',
@@ -44,20 +41,6 @@ setuptools.setup(
         # Option dependency for making density plots
         # 'seaborn==0.12',
     ],
-    package_data={
-        '': [
-               'tests/config/*',
-               'tests/data/*',
-               'tests/notebooks/*',
-               'defaults/*.yaml'
-             ],
-    },
-    entry_points={
-        'console_scripts': [
-            'eva = eva.eva_base:main',
-            'eva_tests = eva.eva_tests:main',
-        ],
-    },
     )
 
 # --------------------------------------------------------------------------------------------------
