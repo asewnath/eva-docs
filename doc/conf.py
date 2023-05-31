@@ -6,7 +6,7 @@ from nbsite.shared_conf import *
 ###################################################
 # edit things below as appropriate for your project
 
-project = u'EVA'
+project = u''
 authors = u'NOAA-EMC, NASA-GMAO'
 copyright = u'2023 ' + authors
 description = 'Short description for html meta description.'

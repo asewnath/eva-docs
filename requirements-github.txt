@@ -1,4 +1,4 @@
-hvplot==0.8.2
+hvplot==0.8.3
 bokeh==2.4.3
 jinja2==3.0.3
 nbsite==0.7.1
