@@ -2,7 +2,8 @@ from os import listdir
 from os.path import isfile, join
 
 # Get all .rst filenames in API to write to index.md
-api_path  = 'API/'
+# In github workflow, script is called outside the doc directory
+api_path  = 'doc/API/'
 api_files = [f for f in listdir(api_path) if isfile(join(api_path, f))]
 
 api_names = []
