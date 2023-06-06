@@ -13,7 +13,7 @@ for f in api_files:
         api_names.append(f_parts[0] + '.' + f_parts[1])
 
 # Open API/index.md to modify
-f_api = open("API/index.md", "a")
+f_api = open(api_path + '/index.md', 'a')
 for api_name in api_names:
     # Write api file names
     f_api.write(api_name + '\n')
