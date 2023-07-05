@@ -19,23 +19,28 @@ templates_path = ['_templates']
 html_css_files = [
     'nbsite.css',
     'custom.css'
+    '_static/site.css'
 ]
 
 extensions += [
     'sphinx_copybutton'
 ]
 
-html_theme = 'sphinx_holoviz_theme'
+#html_theme = 'sphinx_holoviz_theme'
+html_theme = "pydata_sphinx_theme"
+html_favicon = "_static/favicon.ico"
+html_logo = "_static/logo.png"
+
 # logo file etc should be in html_static_path, e.g. _static
 # only change colors in primary, primary_dark, and secondary
-html_theme_options = {
-    'custom_css': 'site.css',
-    'logo': 'logo.png',
-    'favicon': 'favicon.ico',
-    'primary_color': 'MediumSeaGreen',
-    'primary_color_dark': 'sienna',
-    'secondary_color': 'DarkTurquoise',
-}
+#html_theme_options = {
+#    'custom_css': 'site.css',
+#    'logo': 'logo.png',
+#    'favicon': 'favicon.ico',
+#    'primary_color': 'MediumSeaGreen',
+#    'primary_color_dark': 'sienna',
+#    'secondary_color': 'DarkTurquoise',
+#}
 
 myst_enable_extensions = ["colon_fence"]
 
