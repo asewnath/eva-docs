@@ -9,3 +9,4 @@ myst-nb==0.13.2
 sphinx_copybutton==0.5.1
 sphinx_holoviz_theme==0.1.4
 nbconvert==5.6.1
+pydata_sphinx_theme
