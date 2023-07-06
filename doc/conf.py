@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 # flake8: noqa (hacky way of sharing config, etc...)
-
 from nbsite.shared_conf import *
-#import sys
 
 ###################################################
 # edit things below as appropriate for your project
@@ -13,7 +11,6 @@ copyright = u'2023 ' + authors
 description = 'Short description for html meta description.'
 site = 'https://{}.pyviz.org'.format(project)
 version = release = '0.0.1'
-#sys.path.insert(0, './eva/src')
 
 html_static_path += ['_static']
 templates_path = ['_templates']
