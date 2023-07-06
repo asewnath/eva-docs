@@ -9,15 +9,15 @@ kernelspec:
   name: python3
 ---
 
+# Eva - Evaluation and Verification of the Analysis
+
 ```{image} ./_static/images/eva_logo_ball.png
 ---
 alt: eva logo
-align: left
-width: 200
+align: center
+width: 20%
 ---
 ```
-
-# Eva - Evaluation and Verification of the Analysis
 
 Eva is a collaborative project to provide diagnostics that can be used to assess the performance of
 a JEDI-based data assimilation system.
