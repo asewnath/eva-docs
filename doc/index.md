@@ -18,10 +18,7 @@ width: 200
 ```
 
 # Eva - Evaluation and Verification of the Analysis
-\
-\
-\
-\
+
 Eva is a collaborative project to provide diagnostics that can be used to assess the performance of
 a JEDI-based data assimilation system.
 
