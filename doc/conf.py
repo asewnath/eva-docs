@@ -28,8 +28,8 @@ extensions += [
     'sphinx_copybutton'
 ]
 
-html_theme = 'sphinx_holoviz_theme'
-#html_theme = "pydata_sphinx_theme"
+#html_theme = 'sphinx_holoviz_theme'
+html_theme = "pydata_sphinx_theme"
 html_favicon = "_static/favicon.ico"
 html_logo = "_static/logo.png"
 
