@@ -38,5 +38,4 @@ Eva Infrastructure <eva_infrastructure/index>
 Diagnostics <diagnostics/index>
 Plot Tools <plot_tools/index>
 Eva Example <eva_example>
-API <API/index>
 ```
