@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8"/>
+<title>eva example — 0.0.1 documentation</title>
+<meta content="Short description for html meta description." name="description"/>
+<meta content="NOAA-EMC, NASA-GMAO" name="author"/>
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+<!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="_static/css/main.css" rel="stylesheet"/>
+<!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="_static/js/main.js"></script>
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="_static/images/favicon.ico" rel="icon" type="image/png"/>
+<!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="/eva_example.html" rel="canonical">
+</link></head>
+<body class="">
+<header class="navigation">
+<div class="wrapper">
+<a class="logo" href="index.html">
+<img alt="Logo" src="_static/images/logo.png"/>
+</a>
+<a class="navigation-menu logo-text" href="index.html"></a>
+<a class="navigation-menu-button" href="javascript:void(0)" id="js-mobile-menu">Menu</a>
+<nav>
+<ul class="navigation-menu show" id="js-navigation-menu">
+</ul>
+</nav>
+</div>
+</header>
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+<div class="docs section">
+<div id="hacketyhackhack"> <!-- style="width:20%;margin-right: 100px;"> --> <!--style="display: none;"> style="display:none;"> -->
+<div class="toc" style="width:15%; margin-right:20px;">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eva_infrastructure/index.html">Eva Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagnostics/index.html">Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_tools/index.html">Plot Tools</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Eva Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="API/index.html">API</a></li>
+</ul>
+</div>
+</div>
+<div class="content"> <!-- style="max-width:80%;margin-left:auto;margin-right: auto;">-->
+<section id="eva-example">
+<h1>eva example<a class="headerlink" href="#eva-example" title="Permalink to this headline">¶</a></h1>
+<section id="eva-interactive-example">
+<h2>EVA Interactive Example<a class="headerlink" href="#eva-interactive-example" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eva.data.eva_interactive</span> <span class="kn">import</span> <span class="n">EvaInteractive</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  var force = true;
+  var py_version = '3.2.0'.replace('rc', '-rc.').replace('.dev', '-dev.');
+  var is_dev = py_version.indexOf("+") !== -1 || py_version.indexOf("-") !== -1;
+  var reloading = false;
+  var Bokeh = root.Bokeh;
+  var bokeh_loaded = Bokeh != null && (Bokeh.version === py_version || (Bokeh.versions !== undefined && Bokeh.versions.has(py_version)));
+
+  if (typeof (root._bokeh_timeout) === "undefined" || force) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks;
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, js_modules, js_exports, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+    if (js_modules == null) js_modules = [];
+    if (js_exports == null) js_exports = {};
+
+    root._bokeh_onload_callbacks.push(callback);
+
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls.length === 0 && js_modules.length === 0 && Object.keys(js_exports).length === 0) {
+      run_callbacks();
+      return null;
+    }
+    if (!reloading) {
+      console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    }
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+    window._bokeh_on_load = on_load
+
+    function on_error() {
+      console.error("failed to load " + url);
+    }
+
+    var skip = [];
+    if (window.requirejs) {
+      window.requirejs.config({'packages': {}, 'paths': {'jspanel': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/jspanel', 'jspanel-modal': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/modal/jspanel.modal', 'jspanel-tooltip': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/tooltip/jspanel.tooltip', 'jspanel-hint': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/hint/jspanel.hint', 'jspanel-layout': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/layout/jspanel.layout', 'jspanel-contextmenu': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/contextmenu/jspanel.contextmenu', 'jspanel-dock': 'https://cdn.jsdelivr.net/npm/jspanel4@4.12.0/dist/extensions/dock/jspanel.dock', 'gridstack': 'https://cdn.jsdelivr.net/npm/gridstack@7.2.3/dist/gridstack-all', 'notyf': 'https://cdn.jsdelivr.net/npm/notyf@3/notyf.min'}, 'shim': {'jspanel': {'exports': 'jsPanel'}, 'gridstack': {'exports': 'GridStack'}}});
+      require(["jspanel"], function(jsPanel) {
+	window.jsPanel = jsPanel
+	on_load()
+      })
+      require(["jspanel-modal"], function() {
+	on_load()
+      })
+      require(["jspanel-tooltip"], function() {
+	on_load()
+      })
+      require(["jspanel-hint"], function() {
+	on_load()
+      })
+      require(["jspanel-layout"], function() {
+	on_load()
+      })
+      require(["jspanel-contextmenu"], function() {
+	on_load()
+      })
+      require(["jspanel-dock"], function() {
+	on_load()
+      })
+      require(["gridstack"], function(GridStack) {
+	window.GridStack = GridStack
+	on_load()
+      })
+      require(["notyf"], function() {
+	on_load()
+      })
+      root._bokeh_is_loading = css_urls.length + 9;
+    } else {
+      root._bokeh_is_loading = css_urls.length + js_urls.length + js_modules.length + Object.keys(js_exports).length;
+    }
+
+    var existing_stylesheets = []
+    var links = document.getElementsByTagName('link')
+    for (var i = 0; i < links.length; i++) {
+      var link = links[i]
+      if (link.href != null) {
+	existing_stylesheets.push(link.href)
+      }
+    }
+    for (var i = 0; i < css_urls.length; i++) {
+      var url = css_urls[i];
+      if (existing_stylesheets.indexOf(url) !== -1) {
+	on_load()
+	continue;
+      }
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }    if (((window['jsPanel'] !== undefined) && (!(window['jsPanel'] instanceof HTMLElement))) || window.requirejs) {
+      var urls = ['https://cdn.holoviz.org/panel/1.2.0/dist/bundled/floatpanel/jspanel4@4.12.0/dist/jspanel.js', 'https://cdn.holoviz.org/panel/1.2.0/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/modal/jspanel.modal.js', 'https://cdn.holoviz.org/panel/1.2.0/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/tooltip/jspanel.tooltip.js', 'https://cdn.holoviz.org/panel/1.2.0/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/hint/jspanel.hint.js', 'https://cdn.holoviz.org/panel/1.2.0/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/layout/jspanel.layout.js', 'https://cdn.holoviz.org/panel/1.2.0/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/contextmenu/jspanel.contextmenu.js', 'https://cdn.holoviz.org/panel/1.2.0/dist/bundled/floatpanel/jspanel4@4.12.0/dist/extensions/dock/jspanel.dock.js'];
+      for (var i = 0; i < urls.length; i++) {
+        skip.push(urls[i])
+      }
+    }    if (((window['GridStack'] !== undefined) && (!(window['GridStack'] instanceof HTMLElement))) || window.requirejs) {
+      var urls = ['https://cdn.holoviz.org/panel/1.2.0/dist/bundled/gridstack/gridstack@7.2.3/dist/gridstack-all.js'];
+      for (var i = 0; i < urls.length; i++) {
+        skip.push(urls[i])
+      }
+    }    if (((window['Notyf'] !== undefined) && (!(window['Notyf'] instanceof HTMLElement))) || window.requirejs) {
+      var urls = ['https://cdn.holoviz.org/panel/1.2.0/dist/bundled/notificationarea/notyf@3/notyf.min.js'];
+      for (var i = 0; i < urls.length; i++) {
+        skip.push(urls[i])
+      }
+    }    var existing_scripts = []
+    var scripts = document.getElementsByTagName('script')
+    for (var i = 0; i < scripts.length; i++) {
+      var script = scripts[i]
+      if (script.src != null) {
+	existing_scripts.push(script.src)
+      }
+    }
+    for (var i = 0; i < js_urls.length; i++) {
+      var url = js_urls[i];
+      if (skip.indexOf(url) !== -1 || existing_scripts.indexOf(url) !== -1) {
+	if (!window.requirejs) {
+	  on_load();
+	}
+	continue;
+      }
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+    for (var i = 0; i < js_modules.length; i++) {
+      var url = js_modules[i];
+      if (skip.indexOf(url) !== -1 || existing_scripts.indexOf(url) !== -1) {
+	if (!window.requirejs) {
+	  on_load();
+	}
+	continue;
+      }
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      element.type = "module";
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+    for (const name in js_exports) {
+      var url = js_exports[name];
+      if (skip.indexOf(url) >= 0 || root[name] != null) {
+	if (!window.requirejs) {
+	  on_load();
+	}
+	continue;
+      }
+      var element = document.createElement('script');
+      element.onerror = on_error;
+      element.async = false;
+      element.type = "module";
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      element.textContent = `
+      import ${name} from "${url}"
+      window.${name} = ${name}
+      window._bokeh_on_load()
+      `
+      document.head.appendChild(element);
+    }
+    if (!js_urls.length && !js_modules.length) {
+      on_load()
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  var js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.2.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.2.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.2.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.2.0.min.js", "https://cdn.holoviz.org/panel/1.2.0/dist/panel.min.js"];
+  var js_modules = [];
+  var js_exports = {};
+  var css_urls = [];
+  var inline_js = [    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+function(Bokeh) {} // ensure no trailing comma for IE
+  ];
+
+  function run_inline_js() {
+    if ((root.Bokeh !== undefined) || (force === true)) {
+      for (var i = 0; i < inline_js.length; i++) {
+        inline_js[i].call(root, root.Bokeh);
+      }
+      // Cache old bokeh versions
+      if (Bokeh != undefined && !reloading) {
+	var NewBokeh = root.Bokeh;
+	if (Bokeh.versions === undefined) {
+	  Bokeh.versions = new Map();
+	}
+	if (NewBokeh.version !== Bokeh.version) {
+	  Bokeh.versions.set(NewBokeh.version, NewBokeh)
+	}
+	root.Bokeh = Bokeh;
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    }
+    root._bokeh_is_initializing = false
+  }
+
+  function load_or_wait() {
+    // Implement a backoff loop that tries to ensure we do not load multiple
+    // versions of Bokeh and its dependencies at the same time.
+    // In recent versions we use the root._bokeh_is_initializing flag
+    // to determine whether there is an ongoing attempt to initialize
+    // bokeh, however for backward compatibility we also try to ensure
+    // that we do not start loading a newer (Panel>=1.0 and Bokeh>3) version
+    // before older versions are fully initialized.
+    if (root._bokeh_is_initializing && Date.now() > root._bokeh_timeout) {
+      root._bokeh_is_initializing = false;
+      root._bokeh_onload_callbacks = undefined;
+      console.log("Bokeh: BokehJS was loaded multiple times but one version failed to initialize.");
+      load_or_wait();
+    } else if (root._bokeh_is_initializing || (typeof root._bokeh_is_initializing === "undefined" && root._bokeh_onload_callbacks !== undefined)) {
+      setTimeout(load_or_wait, 100);
+    } else {
+      Bokeh = root.Bokeh;
+      bokeh_loaded = Bokeh != null && (Bokeh.version === py_version || (Bokeh.versions !== undefined && Bokeh.versions.has(py_version)));
+      root._bokeh_is_initializing = true
+      root._bokeh_onload_callbacks = []
+      if (!reloading && (!bokeh_loaded || is_dev)) {
+	root.Bokeh = undefined;
+      }
+      load_libs(css_urls, js_urls, js_modules, js_exports, function() {
+	console.debug("Bokeh: BokehJS plotting callback run at", now());
+	run_inline_js();
+      });
+    }
+  }
+  // Give older versions of the autoload script a head-start to ensure
+  // they initialize before we start loading newer version.
+  setTimeout(load_or_wait, 100)
+}(window));</script><script type="application/javascript">
+if ((window.PyViz === undefined) || (window.PyViz instanceof HTMLElement)) {
+  window.PyViz = {comms: {}, comm_status:{}, kernels:{}, receivers: {}, plot_index: []}
+}
+
+
+    function JupyterCommManager() {
+    }
+
+    JupyterCommManager.prototype.register_target = function(plot_id, comm_id, msg_handler) {
+      if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
+        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
+        comm_manager.register_target(comm_id, function(comm) {
+          comm.on_msg(msg_handler);
+        });
+      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
+        window.PyViz.kernels[plot_id].registerCommTarget(comm_id, function(comm) {
+          comm.onMsg = msg_handler;
+        });
+      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
+        google.colab.kernel.comms.registerTarget(comm_id, (comm) => {
+          var messages = comm.messages[Symbol.asyncIterator]();
+          function processIteratorResult(result) {
+            var message = result.value;
+            console.log(message)
+            var content = {data: message.data, comm_id};
+            var buffers = []
+            for (var buffer of message.buffers || []) {
+              buffers.push(new DataView(buffer))
+            }
+            var metadata = message.metadata || {};
+            var msg = {content, buffers, metadata}
+            msg_handler(msg);
+            return messages.next().then(processIteratorResult);
+          }
+          return messages.next().then(processIteratorResult);
+        })
+      }
+    }
+
+    JupyterCommManager.prototype.get_client_comm = function(plot_id, comm_id, msg_handler) {
+      if (comm_id in window.PyViz.comms) {
+        return window.PyViz.comms[comm_id];
+      } else if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
+        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
+        var comm = comm_manager.new_comm(comm_id, {}, {}, {}, comm_id);
+        if (msg_handler) {
+          comm.on_msg(msg_handler);
+        }
+      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
+        var comm = window.PyViz.kernels[plot_id].connectToComm(comm_id);
+        comm.open();
+        if (msg_handler) {
+          comm.onMsg = msg_handler;
+        }
+      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
+        var comm_promise = google.colab.kernel.comms.open(comm_id)
+        comm_promise.then((comm) => {
+          window.PyViz.comms[comm_id] = comm;
+          if (msg_handler) {
+            var messages = comm.messages[Symbol.asyncIterator]();
+            function processIteratorResult(result) {
+              var message = result.value;
+              var content = {data: message.data};
+              var metadata = message.metadata || {comm_id};
+              var msg = {content, metadata}
+              msg_handler(msg);
+              return messages.next().then(processIteratorResult);
+            }
+            return messages.next().then(processIteratorResult);
+          }
+        }) 
+        var sendClosure = (data, metadata, buffers, disposeOnDone) => {
+          return comm_promise.then((comm) => {
+            comm.send(data, metadata, buffers, disposeOnDone);
+          });
+        };
+        var comm = {
+          send: sendClosure
+        };
+      }
+      window.PyViz.comms[comm_id] = comm;
+      return comm;
+    }
+    window.PyViz.comm_manager = new JupyterCommManager();
+    
+
+
+var JS_MIME_TYPE = 'application/javascript';
+var HTML_MIME_TYPE = 'text/html';
+var EXEC_MIME_TYPE = 'application/vnd.holoviews_exec.v0+json';
+var CLASS_NAME = 'output';
+
+/**
+ * Render data to the DOM node
+ */
+function render(props, node) {
+  var div = document.createElement("div");
+  var script = document.createElement("script");
+  node.appendChild(div);
+  node.appendChild(script);
+}
+
+/**
+ * Handle when a new output is added
+ */
+function handle_add_output(event, handle) {
+  var output_area = handle.output_area;
+  var output = handle.output;
+  if ((output.data == undefined) || (!output.data.hasOwnProperty(EXEC_MIME_TYPE))) {
+    return
+  }
+  var id = output.metadata[EXEC_MIME_TYPE]["id"];
+  var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+  if (id !== undefined) {
+    var nchildren = toinsert.length;
+    var html_node = toinsert[nchildren-1].children[0];
+    html_node.innerHTML = output.data[HTML_MIME_TYPE];
+    var scripts = [];
+    var nodelist = html_node.querySelectorAll("script");
+    for (var i in nodelist) {
+      if (nodelist.hasOwnProperty(i)) {
+        scripts.push(nodelist[i])
+      }
+    }
+
+    scripts.forEach( function (oldScript) {
+      var newScript = document.createElement("script");
+      var attrs = [];
+      var nodemap = oldScript.attributes;
+      for (var j in nodemap) {
+        if (nodemap.hasOwnProperty(j)) {
+          attrs.push(nodemap[j])
+        }
+      }
+      attrs.forEach(function(attr) { newScript.setAttribute(attr.name, attr.value) });
+      newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+      oldScript.parentNode.replaceChild(newScript, oldScript);
+    });
+    if (JS_MIME_TYPE in output.data) {
+      toinsert[nchildren-1].children[1].textContent = output.data[JS_MIME_TYPE];
+    }
+    output_area._hv_plot_id = id;
+    if ((window.Bokeh !== undefined) && (id in Bokeh.index)) {
+      window.PyViz.plot_index[id] = Bokeh.index[id];
+    } else {
+      window.PyViz.plot_index[id] = null;
+    }
+  } else if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+    var bk_div = document.createElement("div");
+    bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+    var script_attrs = bk_div.children[0].attributes;
+    for (var i = 0; i < script_attrs.length; i++) {
+      toinsert[toinsert.length - 1].childNodes[1].setAttribute(script_attrs[i].name, script_attrs[i].value);
+    }
+    // store reference to server id on output_area
+    output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+  }
+}
+
+/**
+ * Handle when an output is cleared or removed
+ */
+function handle_clear_output(event, handle) {
+  var id = handle.cell.output_area._hv_plot_id;
+  var server_id = handle.cell.output_area._bokeh_server_id;
+  if (((id === undefined) || !(id in PyViz.plot_index)) && (server_id !== undefined)) { return; }
+  var comm = window.PyViz.comm_manager.get_client_comm("hv-extension-comm", "hv-extension-comm", function () {});
+  if (server_id !== null) {
+    comm.send({event_type: 'server_delete', 'id': server_id});
+    return;
+  } else if (comm !== null) {
+    comm.send({event_type: 'delete', 'id': id});
+  }
+  delete PyViz.plot_index[id];
+  if ((window.Bokeh !== undefined) & (id in window.Bokeh.index)) {
+    var doc = window.Bokeh.index[id].model.document
+    doc.clear();
+    const i = window.Bokeh.documents.indexOf(doc);
+    if (i > -1) {
+      window.Bokeh.documents.splice(i, 1);
+    }
+  }
+}
+
+/**
+ * Handle kernel restart event
+ */
+function handle_kernel_cleanup(event, handle) {
+  delete PyViz.comms["hv-extension-comm"];
+  window.PyViz.plot_index = {}
+}
+
+/**
+ * Handle update_display_data messages
+ */
+function handle_update_output(event, handle) {
+  handle_clear_output(event, {cell: {output_area: handle.output_area}})
+  handle_add_output(event, handle)
+}
+
+function register_renderer(events, OutputArea) {
+  function append_mime(data, metadata, element) {
+    // create a DOM node to render to
+    var toinsert = this.create_output_subarea(
+    metadata,
+    CLASS_NAME,
+    EXEC_MIME_TYPE
+    );
+    this.keyboard_manager.register_events(toinsert);
+    // Render to node
+    var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+    render(props, toinsert[0]);
+    element.append(toinsert);
+    return toinsert
+  }
+
+  events.on('output_added.OutputArea', handle_add_output);
+  events.on('output_updated.OutputArea', handle_update_output);
+  events.on('clear_output.CodeCell', handle_clear_output);
+  events.on('delete.Cell', handle_clear_output);
+  events.on('kernel_ready.Kernel', handle_kernel_cleanup);
+
+  OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+    safe: true,
+    index: 0
+  });
+}
+
+if (window.Jupyter !== undefined) {
+  try {
+    var events = require('base/js/events');
+    var OutputArea = require('notebook/js/outputarea').OutputArea;
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  } catch(err) {
+  }
+}
+</script><div class="output text_html"><style>*[data-root-id],
+*[data-root-id] > * {
+  box-sizing: border-box;
+  font-family: var(--jp-ui-font-family);
+  font-size: var(--jp-ui-font-size1);
+  color: var(--vscode-editor-foreground, var(--jp-ui-font-color1));
+}
+
+/* Override VSCode background color */
+.cell-output-ipywidget-background:has(
+    > .cell-output-ipywidget-background > .lm-Widget > *[data-root-id]
+  ),
+.cell-output-ipywidget-background:has(> .lm-Widget > *[data-root-id]) {
+  background-color: transparent !important;
+}
+</style></div></div>
+</div>
+<section id="load-data-collections-for-amsu-a-and-aircraft">
+<h3>Load data collections for AMSU-A and Aircraft<a class="headerlink" href="#load-data-collections-for-amsu-a-and-aircraft" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">amsua_file</span> <span class="o">=</span> <span class="s1">'data/ioda_obs_space.amsua_n19.hofx.2020-12-14T210000Z.nc4'</span>
+<span class="n">aircraft_file</span> <span class="o">=</span> <span class="s1">'data/ioda_obs_space.aircraft.hofx.2020-12-14T210000Z.nc4'</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eva_amsua</span> <span class="o">=</span> <span class="n">EvaInteractive</span><span class="p">()</span>
+<span class="n">eva_aircraft</span> <span class="o">=</span> <span class="n">EvaInteractive</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_amsua</span> <span class="o">=</span> <span class="n">eva_amsua</span><span class="o">.</span><span class="n">load_ioda</span><span class="p">(</span><span class="n">amsua_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO EvaInteractive:   Initializing eva IodaObsSpace object
+INFO DataCollections: --------------------------------------------------------------------------------
+INFO DataCollections: <span class="-Color -Color-Bold">Collections available: </span>
+INFO DataCollections: 
+INFO DataCollections: Collection name: interactive
+INFO DataCollections: 
+INFO DataCollections:  Dimensions:
+INFO DataCollections:   Channel: 15
+INFO DataCollections:   Location: 100
+INFO DataCollections: 
+INFO DataCollections:  Coordinates:
+INFO DataCollections:   Channel
+INFO DataCollections:   Location
+INFO DataCollections: 
+INFO DataCollections:  Data (group::variable):
+INFO DataCollections:   EffectiveError::brightnessTemperature              (float32) | Min=+2.3000e-01, Max=+6.5943e+00, RMS=+2.1473e+00
+INFO DataCollections:   MetaData::channelNumber                            (float64) | Min=+1.0000e+00, Max=+1.5000e+01, RMS=+9.0921e+00
+INFO DataCollections:   EffectiveQC::brightnessTemperature                 (int32  ) | Min=         +0, Max=        +19
+INFO DataCollections:   GsiBc::brightnessTemperature                       (float32) | Min=-9.8679e+00, Max=+4.3491e+01, RMS=+3.3058e+00
+INFO DataCollections:   GsiEffectiveQC::brightnessTemperature              (int32  ) | Min=         +0, Max=         +1
+INFO DataCollections:   GsiFinalObsError::brightnessTemperature            (float32) | Min=+2.3000e-01, Max=+8.3878e+00, RMS=+2.2078e+00
+INFO DataCollections:   GsiHofX::brightnessTemperature                     (float32) | Min=+1.4130e+02, Max=+2.8025e+02, RMS=+2.3076e+02
+INFO DataCollections:   GsiHofXBc::brightnessTemperature                   (float32) | Min=+1.4369e+02, Max=+2.8025e+02, RMS=+2.3102e+02
+INFO DataCollections:   GsiHofXClr::brightnessTemperature                  (float32) | Min=+0.0000e+00, Max=+0.0000e+00, RMS=+0.0000e+00
+INFO DataCollections:   MetaData::sensorZenithAngle                        (float32) | Min=-4.4800e+01, Max=+4.4800e+01, RMS=+2.8209e+01
+INFO DataCollections:   MetaData::sensorCentralFrequency                   (float32) | Min=+2.3800e+01, Max=+8.9010e+01, RMS=+5.5628e+01
+INFO DataCollections:   MetaData::sensorScanPosition                       (float32) | Min=+4.0000e+00, Max=+2.7000e+01, RMS=+1.6427e+01
+INFO DataCollections:   MetaData::ObsError                                 (float32) | Min=+2.3000e-01, Max=+5.0000e+00, RMS=+1.7767e+00
+INFO DataCollections:   MetaData::mean_lapse_rate                          (float32) | Min=-8.1909e+00, Max=+4.7830e+00, RMS=+3.9322e+00
+INFO DataCollections:   MetaData::longitude                                (float32) | Min=+8.4916e+00, Max=+3.5774e+02, RMS=+2.0666e+02
+INFO DataCollections:   MetaData::gsi_use_flag                             (int32  ) | Min=         -1, Max=         +4
+INFO DataCollections:   MetaData::latitude                                 (float32) | Min=-8.6511e+01, Max=-5.4103e+01, RMS=+6.9190e+01
+INFO DataCollections:   MetaData::sensorViewAngle                          (float32) | Min=-3.8334e+01, Max=+3.8325e+01, RMS=+2.4368e+01
+INFO DataCollections:   MetaData::clw_retrieved_from_observation           (float32) | Min=-1.5052e-01, Max=+2.8662e-01, RMS=+7.1686e-02
+INFO DataCollections:   MetaData::clw_retrieved_from_background            (float32) | Min=+0.0000e+00, Max=+0.0000e+00, RMS=+0.0000e+00
+INFO DataCollections:   MetaData::solarZenithAngle                         (float32) | Min=+6.7860e+01, Max=+8.4950e+01, RMS=+7.6098e+01
+INFO DataCollections:   MetaData::sensorPolarizationDirection              (int32  ) | Min=         +9, Max=        +10
+INFO DataCollections:   MetaData::scat_retrieved_from_observation          (float32) | Min=+0.0000e+00, Max=+0.0000e+00, RMS=+0.0000e+00
+INFO DataCollections:   MetaData::sensorCentralWavenumber                  (float32) | Min=+7.9387e-01, Max=+2.9691e+00, RMS=+1.8555e+00
+INFO DataCollections:   MetaData::sensorChannelNumber                      (int32  ) | Min=         +1, Max=        +15
+INFO DataCollections:   MetaData::sensorAzimuthAngle                       (float32) | Min=+3.0200e+00, Max=+3.5661e+02, RMS=+2.0913e+02
+INFO DataCollections:   MetaData::dateTime                                 (int64  ) | Min=+1607983897, Max=+1607997115
+INFO DataCollections:   MetaData::solarAzimuthAngle                        (float32) | Min=+9.7600e+01, Max=+2.4965e+02, RMS=+1.7693e+02
+INFO DataCollections:   MetaData::height                                   (float32) | Min=+0.0000e+00, Max=+3.9396e+03, RMS=+1.5339e+03
+INFO DataCollections:   ObsBias::brightnessTemperature                     (float32) | Min=-1.0442e+01, Max=+4.4369e+01, RMS=+3.5998e+00
+INFO DataCollections:   ObsError::brightnessTemperature                    (float32) | Min=+2.3000e-01, Max=+5.0000e+00, RMS=+1.7767e+00
+INFO DataCollections:   ObsValue::brightnessTemperature                    (float32) | Min=+1.4472e+02, Max=+2.8050e+02, RMS=+2.3172e+02
+INFO DataCollections:   PreQC::brightnessTemperature                       (int32  ) | Min=        -51, Max=        +51
+INFO DataCollections:   cloud_liquid_waterPredictor::brightnessTemperature (float32) | Min=-1.2171e-01, Max=+2.8752e-01, RMS=+5.3735e-02
+INFO DataCollections:   constantPredictor::brightnessTemperature           (float32) | Min=+0.0000e+00, Max=+1.0000e+00, RMS=+9.6609e-01
+INFO DataCollections:   emissivityPredictor::brightnessTemperature         (float32) | Min=+0.0000e+00, Max=+2.6238e+02, RMS=+9.9499e+01
+INFO DataCollections:   hofx::brightnessTemperature                        (float32) | Min=+1.4351e+02, Max=+2.8025e+02, RMS=+2.3099e+02
+INFO DataCollections:   lapse_ratePredictor::brightnessTemperature         (float32) | Min=-7.1894e+00, Max=+4.0331e+00, RMS=+2.2956e+00
+INFO DataCollections:   lapse_rate_order_2Predictor::brightnessTemperature (float32) | Min=+0.0000e+00, Max=+5.1687e+01, RMS=+1.0174e+01
+INFO DataCollections:   scan_anglePredictor::brightnessTemperature         (float32) | Min=-6.6905e-01, Max=+6.6890e-01, RMS=+4.1088e-01
+INFO DataCollections:   scan_angle_order_2Predictor::brightnessTemperature (float32) | Min=+0.0000e+00, Max=+4.4763e-01, RMS=+2.3045e-01
+INFO DataCollections:   scan_angle_order_3Predictor::brightnessTemperature (float32) | Min=-2.9949e-01, Max=+2.9928e-01, RMS=+1.3946e-01
+INFO DataCollections:   scan_angle_order_4Predictor::brightnessTemperature (float32) | Min=+0.0000e+00, Max=+2.0038e-01, RMS=+8.7428e-02
+INFO DataCollections: --------------------------------------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_aircraft</span> <span class="o">=</span> <span class="n">eva_aircraft</span><span class="o">.</span><span class="n">load_ioda</span><span class="p">(</span><span class="n">aircraft_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO EvaInteractive:   Initializing eva IodaObsSpace object
+INFO DataCollections: --------------------------------------------------------------------------------
+INFO DataCollections: <span class="-Color -Color-Bold">Collections available: </span>
+INFO DataCollections: 
+INFO DataCollections: Collection name: interactive
+INFO DataCollections: 
+INFO DataCollections:  Dimensions:
+INFO DataCollections:   Location: 99
+INFO DataCollections: 
+INFO DataCollections:  Coordinates:
+INFO DataCollections:   Location
+INFO DataCollections: 
+INFO DataCollections:  Data (group::variable):
+INFO DataCollections:   EffectiveError::airTemperature    (float32) | Min=+1.0000e+00, Max=+1.4706e+00, RMS=+1.0771e+00
+INFO DataCollections:   EffectiveError::windEastward      (float32) | Min=+2.5000e+00, Max=+2.5000e+00, RMS=+2.5000e+00
+INFO DataCollections:   EffectiveError::windNorthward     (float32) | Min=+2.5000e+00, Max=+2.5000e+00, RMS=+2.5000e+00
+INFO DataCollections:   EffectiveQC::airTemperature       (int32  ) | Min=         +0, Max=         +0
+INFO DataCollections:   EffectiveQC::windEastward         (int32  ) | Min=         +0, Max=         +0
+INFO DataCollections:   EffectiveQC::windNorthward        (int32  ) | Min=         +0, Max=         +0
+INFO DataCollections:   GsiAdjustObsError::airTemperature (float32) | Min=+1.0000e+00, Max=+2.7137e+00, RMS=+1.2265e+00
+INFO DataCollections:   GsiAdjustObsError::windEastward   (float32) | Min=+2.5000e+00, Max=+5.1534e+00, RMS=+2.7953e+00
+INFO DataCollections:   GsiAdjustObsError::windNorthward  (float32) | Min=+2.5000e+00, Max=+5.1534e+00, RMS=+2.7953e+00
+INFO DataCollections:   GsiEffectiveQC::airTemperature    (int32  ) | Min=         +0, Max=         +1
+INFO DataCollections:   GsiEffectiveQC::windEastward      (int32  ) | Min=         +0, Max=         +1
+INFO DataCollections:   GsiEffectiveQC::windNorthward     (int32  ) | Min=         +0, Max=         +1
+INFO DataCollections:   GsiFinalObsError::airTemperature  (float32) | Min=+1.0000e+00, Max=+1.4548e+01, RMS=+1.9612e+00
+INFO DataCollections:   GsiFinalObsError::windEastward    (float32) | Min=+2.5000e+00, Max=+9.0386e+00, RMS=+2.9692e+00
+INFO DataCollections:   GsiFinalObsError::windNorthward   (float32) | Min=+2.5000e+00, Max=+9.0386e+00, RMS=+2.9692e+00
+INFO DataCollections:   GsiHofX::airTemperature           (float32) | Min=+2.1099e+02, Max=+2.9181e+02, RMS=+2.5772e+02
+INFO DataCollections:   GsiHofX::windEastward             (float32) | Min=-3.9112e+00, Max=+5.3673e+01, RMS=+2.3508e+01
+INFO DataCollections:   GsiHofX::windNorthward            (float32) | Min=-4.5300e+01, Max=+2.8187e+01, RMS=+1.3531e+01
+INFO DataCollections:   GsiHofXBc::airTemperature         (float32) | Min=+2.1134e+02, Max=+2.9142e+02, RMS=+2.5761e+02
+INFO DataCollections:   GsiHofXBc::windEastward           (float32) | Min=-3.9112e+00, Max=+5.3673e+01, RMS=+2.3508e+01
+INFO DataCollections:   GsiHofXBc::windNorthward          (float32) | Min=-4.5300e+01, Max=+2.8187e+01, RMS=+1.3531e+01
+INFO DataCollections:   GsiInputObsError::windEastward    (float32) | Min=+2.5000e+00, Max=+2.5000e+00, RMS=+2.5000e+00
+INFO DataCollections:   GsiInputObsError::windNorthward   (float32) | Min=+2.5000e+00, Max=+2.5000e+00, RMS=+2.5000e+00
+INFO DataCollections:   GsiQCWeight::airTemperature       (float32) | Min=+4.0000e+00, Max=+4.0000e+00, RMS=+4.0000e+00
+INFO DataCollections:   GsiQCWeight::windEastward         (float32) | Min=+4.0000e+00, Max=+4.0000e+00, RMS=+4.0000e+00
+INFO DataCollections:   GsiQCWeight::windNorthward        (float32) | Min=+4.0000e+00, Max=+4.0000e+00, RMS=+4.0000e+00
+INFO DataCollections:   GsiUseFlag::airTemperature        (int32  ) | Min=         -1, Max=         +1
+INFO DataCollections:   GsiUseFlag::windEastward          (int32  ) | Min=         -1, Max=         +1
+INFO DataCollections:   GsiUseFlag::windNorthward         (int32  ) | Min=         -1, Max=         +1
+INFO DataCollections:   MetaData::dateTime                (int64  ) | Min=+1607979779, Max=+1608000419
+INFO DataCollections:   MetaData::latitude                (float32) | Min=+1.9650e+01, Max=+4.4647e+01, RMS=+3.5280e+01
+INFO DataCollections:   MetaData::longitude               (float32) | Min=+2.3754e+02, Max=+2.8530e+02, RMS=+2.6559e+02
+INFO DataCollections:   MetaData::pressure                (float32) | Min=+1.7870e+04, Max=+1.0173e+05, RMS=+6.4129e+04
+INFO DataCollections:   MetaData::stationElevation        (float32) | Min=-7.8000e+01, Max=+1.2497e+04, RMS=+7.1935e+03
+INFO DataCollections:   MetaData::height                  (float32) | Min=-3.4000e+01, Max=+1.2497e+04, RMS=+6.5524e+03
+INFO DataCollections:   MetaData::stationIdentification   (object )
+INFO DataCollections:   ObsBias::airTemperature           (float32) | Min=+0.0000e+00, Max=+0.0000e+00, RMS=+0.0000e+00
+INFO DataCollections:   ObsBias::windEastward             (float32) | Min=+0.0000e+00, Max=+0.0000e+00, RMS=+0.0000e+00
+INFO DataCollections:   ObsBias::windNorthward            (float32) | Min=+0.0000e+00, Max=+0.0000e+00, RMS=+0.0000e+00
+INFO DataCollections:   ObsError::airTemperature          (float32) | Min=+1.0000e+00, Max=+1.4706e+00, RMS=+1.0771e+00
+INFO DataCollections:   ObsError::windEastward            (float32) | Min=+2.5000e+00, Max=+2.5000e+00, RMS=+2.5000e+00
+INFO DataCollections:   ObsError::windNorthward           (float32) | Min=+2.5000e+00, Max=+2.5000e+00, RMS=+2.5000e+00
+INFO DataCollections:   ObsType::airTemperature           (int32  ) | Min=       +133, Max=       +133
+INFO DataCollections:   ObsType::windEastward             (int32  ) | Min=       +233, Max=       +233
+INFO DataCollections:   ObsType::windNorthward            (int32  ) | Min=       +233, Max=       +233
+INFO DataCollections:   ObsValue::airTemperature          (float32) | Min=+2.0815e+02, Max=+2.9125e+02, RMS=+2.5780e+02
+INFO DataCollections:   ObsValue::windEastward            (float32) | Min=-6.1000e+00, Max=+5.5300e+01, RMS=+2.3130e+01
+INFO DataCollections:   ObsValue::windNorthward           (float32) | Min=-4.7000e+01, Max=+3.0400e+01, RMS=+1.4299e+01
+INFO DataCollections:   PreQC::airTemperature             (int32  ) | Min=         +1, Max=        +13
+INFO DataCollections:   PreQC::windEastward               (int32  ) | Min=         +1, Max=        +13
+INFO DataCollections:   PreQC::windNorthward              (int32  ) | Min=         +1, Max=        +13
+INFO DataCollections:   PreUseFlag::airTemperature        (int32  ) | Min=         +0, Max=       +101
+INFO DataCollections:   PreUseFlag::windEastward          (int32  ) | Min=         +0, Max=       +101
+INFO DataCollections:   PreUseFlag::windNorthward         (int32  ) | Min=         +0, Max=       +101
+INFO DataCollections:   hofx::airTemperature              (float32) | Min=+2.1094e+02, Max=+2.9195e+02, RMS=+2.5773e+02
+INFO DataCollections:   hofx::windEastward                (float32) | Min=-3.8279e+00, Max=+5.3992e+01, RMS=+2.3526e+01
+INFO DataCollections:   hofx::windNorthward               (float32) | Min=-4.6586e+01, Max=+2.8748e+01, RMS=+1.3622e+01
+INFO DataCollections: --------------------------------------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="arithmetic-demonstration-with-amsu-a">
+<h3>Arithmetic demonstration with AMSU-A<a class="headerlink" href="#arithmetic-demonstration-with-amsu-a" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eva_amsua</span><span class="o">.</span><span class="n">arithmetic</span><span class="p">(</span><span class="n">new_name</span><span class="o">=</span><span class="s1">'ObsValueMinusGsiHofXBc'</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="s1">'ObsValue-GsiHofXBc'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO EvaInteractive: Added 'ObsValueMinusGsiHofXBc' to data collection.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eva_amsua</span><span class="o">.</span><span class="n">arithmetic</span><span class="p">(</span><span class="n">new_name</span><span class="o">=</span><span class="s1">'ObsValueMinusHofX'</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="s1">'ObsValue-hofx'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO EvaInteractive: Added 'ObsValueMinusHofX' to data collection.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eva_amsua</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s1">'ObsValueMinusGsiHofXBc::brightnessTemperature'</span><span class="p">,</span> 
+                  <span class="s1">'ObsValueMinusHofX::brightnessTemperature'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="p1002">
+<div data-root-id="p1002" id="d53a171c-ed20-45df-a2af-8cfe223b1e24" style="display: contents;"></div>
+</div>
+<script type="application/javascript">(function(root) {
+  var docs_json = {"97d7814a-eb3f-49e2-9244-80f273da1167":{"version":"3.2.0","title":"Bokeh Application","roots":[{"type":"object","name":"Row","id":"p1002","attributes":{"name":"Row01470","tags":["embedded"],"stylesheets":["\n:host(.pn-loading.pn-arc):before, .pn-loading.pn-arc:before {\n  background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJtYXJnaW46IGF1dG87IGJhY2tncm91bmQ6IG5vbmU7IGRpc3BsYXk6IGJsb2NrOyBzaGFwZS1yZW5kZXJpbmc6IGF1dG87IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiPiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzNjM2MzIiBzdHJva2Utd2lkdGg9IjEwIiByPSIzNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTY0LjkzMzYxNDMxMzQ2NDE1IDU2Ljk3Nzg3MTQzNzgyMTM4Ij4gICAgPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBkdXI9IjFzIiB2YWx1ZXM9IjAgNTAgNTA7MzYwIDUwIDUwIiBrZXlUaW1lcz0iMDsxIj48L2FuaW1hdGVUcmFuc2Zvcm0+ICA8L2NpcmNsZT48L3N2Zz4=\");\n  background-size: auto calc(min(50%, 400px));\n}",{"type":"object","name":"ImportedStyleSheet","id":"p1005","attributes":{"url":"https://cdn.holoviz.org/panel/1.2.0/dist/css/loading.css"}},{"type":"object","name":"ImportedStyleSheet","id":"p1054","attributes":{"url":"https://cdn.holoviz.org/panel/1.2.0/dist/css/listpanel.css"}},{"type":"object","name":"ImportedStyleSheet","id":"p1003","attributes":{"url":"https://cdn.holoviz.org/panel/1.2.0/dist/bundled/theme/default.css"}},{"type":"object","name":"ImportedStyleSheet","id":"p1004","attributes":{"url":"https://cdn.holoviz.org/panel/1.2.0/dist/bundled/theme/native.css"}}],"min_width":400,"margin":0,"sizing_mode":"stretch_width","align":"start","children":[{"type":"object","name":"Spacer","id":"p1006","attributes":{"name":"HSpacer01481","stylesheets":["\n:host(.pn-loading.pn-arc):before, .pn-loading.pn-arc:before {\n  background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJtYXJnaW46IGF1dG87IGJhY2tncm91bmQ6IG5vbmU7IGRpc3BsYXk6IGJsb2NrOyBzaGFwZS1yZW5kZXJpbmc6IGF1dG87IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiPiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzNjM2MzIiBzdHJva2Utd2lkdGg9IjEwIiByPSIzNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTY0LjkzMzYxNDMxMzQ2NDE1IDU2Ljk3Nzg3MTQzNzgyMTM4Ij4gICAgPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBkdXI9IjFzIiB2YWx1ZXM9IjAgNTAgNTA7MzYwIDUwIDUwIiBrZXlUaW1lcz0iMDsxIj48L2FuaW1hdGVUcmFuc2Zvcm0+ICA8L2NpcmNsZT48L3N2Zz4=\");\n  background-size: auto calc(min(50%, 400px));\n}",{"id":"p1005"},{"id":"p1003"},{"id":"p1004"}],"margin":0,"sizing_mode":"stretch_width","align":"start"}},{"type":"object","name":"Figure","id":"p1010","attributes":{"width":400,"height":400,"margin":[5,10],"sizing_mode":"fixed","align":"start","x_range":{"type":"object","name":"Range1d","id":"p1007","attributes":{"tags":[[["ObsValueMinusGsiHofXBc::brightnessTemperature","ObsValueMinusGsiHofXBc::brightnessTemperature",null]]],"start":-31.516390991210937,"end":23.199954223632812,"reset_start":-31.516390991210937,"reset_end":23.199954223632812}},"y_range":{"type":"object","name":"Range1d","id":"p1008","attributes":{"tags":[[["ObsValueMinusHofX::brightnessTemperature","ObsValueMinusHofX::brightnessTemperature",null]]],"start":-32.587580871582034,"end":33.1968490600586,"reset_start":-32.587580871582034,"reset_end":33.1968490600586}},"x_scale":{"type":"object","name":"LinearScale","id":"p1020"},"y_scale":{"type":"object","name":"LinearScale","id":"p1021"},"title":{"type":"object","name":"Title","id":"p1013","attributes":{"text_color":"black","text_font_size":"12pt"}},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1047","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1038","attributes":{"selected":{"type":"object","name":"Selection","id":"p1039","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1040"},"data":{"type":"map","entries":[["ObsValueMinusGsiHofXBc::brightnessTemperature",{"type":"ndarray","array":{"type":"bytes","data":"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"},"shape":[1500],"dtype":"float32","order":"little"}],["ObsValueMinusHofX::brightnessTemperature",{"type":"ndarray","array":{"type":"bytes","data":"AMewwAD5kMCALqa/yPLKQQAZob8Av2TAAAxPPgBY8D5AAtFAANWVP/BcMsGQfxHBAEFfP+CGiEDAIURAoP7VwEC0UcAAOW/AALigvoA0akAAITDAwG8EwICqo0AAITo/QDhewABfvcCQbRpBwKgyQMA2K8Bg8uTAoCSXQAAl/z+AtxTBgP/9wCBlmEAA7uY/MAkBwcAsCkBAdkFAgIq1PwBt+8AAwC68YJvMQMCvNEDAy4zAwBZlwADMpkCAd9I/oE4QwUAWBcCwhELBAE1BP4Be2L/wUwhBIGbEQACyVb+AwpW/wMFuQIC69j8AKTO/4NzRwMAKwMBgAtRAABibPwAQscBApE/AAE9cQAB5OD+gcr/A4HYWwWDHhEAAULq9ANlNwMAf0sAA3YW/AOT6viA7scAQ0SDBgLHZPwAgZD4A6Pe+gCeqv4D4kD9obZhBkFY2wSBv2kBADT9AkCkFQSBYRcEAsss/wO45QMCVi0BAXSvBoKKEQADQCUAA72M/0Jk1wQBNVT+AWAZAQEqDQOAOt0DgYrLAgE1JwPC33UGAX25AQOw7QMAwsEAABIo+IJSfQACRAT8AdYe/AB3TwACsHj8A0C5AwAILQMC7S8AAoC6/wPlfQAB4kL5AlUNA4H3ZQIBjE8BgF8FAAK8wPwAHNUAAIVfAgE4zQYCGwz8wqxBBAEFev8ABUUAAD1s/gGm5v0CLEsAgEp9AAGT8PgC8KD4A3LE/AKZqPwCcyD5gioHAAMRmv4BfE0GAjLI/ABB3vQBvuz+AL9Q/gJ8lQAB8Hj/ADSFAoCCiwIABsT+gfqJAkCMkQbA0EEEAuNi+QJBEQEDSbUAAc6A/AMA7PUBhX8AAWPi9UMopQQB/Rz+Av6+/AExEvwBgOEAAhLY/gNWjv2BMy8AArUc/AE6pvgC5wr8AbqY+AJ9svwD+rr4AIQVAQNzcwADgnDwAwCq+gJC2QECjZUAAY88/oC2VQIAjKcAQFxhB4C6aQKDqJEHApMDAAMDmvADldz/ALPtAQChYwIDh2j8AzgRAAKBwvcClYcAAGlK/QM0WQMDp6kAwjCJBgLwbQGBziUAgqlZBgFlrQCDTwUAAVupAgPilQADXaT8AYLW/wLUCQYBI6z8g+QhBALr7vgCI172AzRJAAIbnPyAbsEAAzP6+AEgzPvDhNEEAdlC/4CauQACHZj+A5fQ/gEeGP1jdj0EAcAy9AMEMQQAIRz8AsztBAMDyPYAOVUBgnK9AIFXdQABwU72AjPhAIAvjQAC3cL8AFLu+AK+6P8BaPUAw4idBAKBmveDwkUAgu7hAgFoUwABwsT3gawhBoISYQMBKS0AAgBY/MLgLQTAQMEFQ50pBAHShPkCOF0AA35RAQHldQACt9D8AR6O/wLH2QLAcOkEApzY/AF3GP4DdHUCAgIU/AJe7PwBw/z4Ay00/gDsfQICnoj8Arpq+wCGlQABiND8Azxg/gFnfQIAVE0CA8h5AgGPBv4C67kAgX8dAAICxPoCtucCASL1AEMMZQQBh9UCg7FpBAOaiQOAtzUAANBK+ACGjQGC+nkAA4AQ9UMcLQQBhjb/Ah35AgERBQKAr00Ag1IBAACQYPgAUmr4ACG0+AOYjPwBsqT4Apo++ANeBvwAfU78AxHg+AMBEPICGB0CAW4u/AMAgPAAGxb4AYCy+ACUFwAAsE8AA8o++AGBSvgB4Nz4AmAE/ADJYwAAgaj0AcDs9ALkYwACag78AaOY/ABKbPoALtr/APAfAgEyrPwCAiTuA5rG/ABC3PQAi8j4AfRY/gCW6PwB0PD4AxEG+ADBLvQDsqb8Ae6a/AML3PgBEDz6ACsW/APUuvwAC+r4AnsC+AF6XPwD9bb8AqE6+AGBBPQA6E78A0JY+ANFUPwCI2z0Ahj7AACMwvwB4dL8Akjk/gNR2wAAZBT8Anks/AH6jPgDQBsAAP0O/AFa7PgA4zL0AJxzAgC/DvwB4kj8ASuc+wKdFwAChs78AgBC8ABA2PQBAE7yAUaW/AK1wPwAcnb4AyHG/gG+svwBY+L0AeuW+AEBPPgCojz0AUMg9AJBhPwBW9T4A+KI+AOCwvQBfED8AkMy9APAqvQCmMT8AJBG+AOLkvgDxob8AANw6APzNPkB1WcCAHra/ABaovwBubr8ACPc9AOpNwMBlaMAAeeW/AEA6PACsVL4AiBTAgDhewIDG5b8AJBI+AHDKPeD7rMAAVzrAAJT2vgDkrr4AgGu9wKx5wIDOUMAANZm/AOxBPkD6FMAAkNy/ABqhvwCA9TwAl07AwOIUwAD0r78AcKq9QPVbwACM478AF6S/ACDfPMBfW8AAxNS/ABj/PQCYcD4AO5DAALTPv4BFhr8AEOC9QD6iwCCugMAA8FM9AICUvUBGQsAALBvAQBMowAAwRz0AjXzAAIqPvwADub8A+N49gCdPwIDn8L8AtOK/ACwIPkBMUcAA/zrAAPYevwBgC77AURjAAHvgvwDEGD4AxFW+wC5GwIBGFMAAMIE+ADQ6PuA8hsDA8zDAAJiYvQBwAr7gb4LAAKpJwADAbD4ASDo+gLVGwMCzIcAAgL07AGbVPsCcasAAY5y/gF7NvwBxgr/Aej3AALnUvwCgID4AcAu9wK90wAAO8b4AdMa/AICcO8ByPcCAhfu/AHX8vwBQcb0A0OM9AG7oPgBm0T4AgJM7AGjFPQCS2j4ABr0+AMDnvAAAwDwA6AQ+AIpeP4CZqD8ASPs9ALw0PgAg970AVS8/AAAMOgAA27sAhDG+ABAEPQA4az4AQDu9ADg2PgAQ170AEOg9AFw5PgD4iL0AgBQ+AFibPQB8KT4A6PU9AJCGPgAcgD4AeBY+ABR9PgDMAb4Axgg/AMDLPABAczwAxAC+AMtaPwDgVz4AAIg8ACCOPQDEqD4ATNQ+AGDhPQC4/j0AXU8/ABhpPgB0Uj8AYNO8ANAYPgBggLwAkI89AAABPQAESb4A6Fg+AACJPAC40j0ADDk+ANtOPwCogT0Ato0+AGR9PgAgmj4AHD4+AOCuvQBAAD0AMvE+AIC4vQBIzD0AIOu9AIygPgAEKz4AXB8+AJIQPwA6dj8A0FI+AABCPACw4z0AMOs9AESbPgAkAb4Ak04/AIByvABo4D0A/Jc+ANpyPwD0dT4APAq+AHDvvQBmPD8AgKC7ADhvPgBgCj4AhtU+AEAfvQBSkL4AFpy+AAwPvgDwdD0ApOC+AKCwPAAwFD8ARuA+AKAVvgDA+L0AlAI+AOD2vQBW+z4AaOY+AFa7PgAAmjsAUPy9ANT0PgBw9z0AsBq9AEjFPgB8Zb4AtII+AJBPPQDMYj4AyHG+AMDiPgAoUT4AHoI+AIDjPAAVAD8AHJU+ALADPQB4nD0ASCo+AEhaPgC4070ABoy+AADGOgBcQ74ASJI+AMxMPgDAED8A4Ca9APAePQAygz4AHuM+AOzEPgDKhj4AgH88AGB8vgDQNT0AENQ+APhcvgBQGr0AYE69AKAgPwBgU70AGo8+AES9vgCAyLwA+BE/AKglPgBMxT4AbBc+AFT5PgAw5r0ATi6/AMBdPADoHb4AkGk9APwmPwBkwT4AVG8+ABxTvgCwfT0AuB8/ACgSvgAQW74AkOQ+ANSaPgAAu7wA5J++AJAWPQA4az4ABHU+AFz8PgCwsz0ACoQ+ANB9PQB43D4A6OM+AEDYvAAYIb4Axvk+ACATPQCgfr4AXLw+AAa6PgCuvb4ApJo+ADRwvuACDEEA+ddAALb/P4BcXEAA4BY/QBvtQCAB+EBAUcRAgF6jQIAvtT+Ait5AQFcnQKC7uECAGrFAgNyHP4CIG0AAXDpAYCLlQIC4j0CAZj1AgEHeQGBSjkCg1cFAYGXeQBCoAEGAU+Q/wJ/5QMDUNkAg0NRA4I+fQADZk0CAUIFAQBnNQEB5dUCgPaJAAEZLPwCU3ECgJtxAwB/gQAC48j4AOmdAwKfMQACmX0BAJjDAYE2HQMAB6kCgwLlAAGjYvwCjA0Fg8M1AwFqEQADzCr+g1YlAwFC5QEAZjECAXZk/IIPkQADr1UBAQTRAgAb2P6Dk1EAgdYVAAMKdPgD2nz8A99pAADPwQADBgj/AoRtAoCvxQFAJBEEA2Fu+AIw3PsB95UBALZ5AgJMzQADFlz8gIsJAAOUxQAD+6r6AGFxAICGvQADrbEAANGs+AJ3EPwB8sEAAgH0/gAdrQIAS0j8ga7hAAKmbPwBKyD/A8FFAoLiLQAC90z9A9CNA4O2RQICP6kCg5ItAQNgqQAA60T8ACNk9ACC4PACYMj4A7AU+ABAhPQCgH70AyLc9AJRIPgCIq70A9Ko+AGAFPQB4+b4A+Hw+AKAUPQDQd74AyMa9ABQnPgBQEb4AwB+8AGapPgCQVT4AgD4+AHBDvQCYgT0ATGm+AKSbPgBI8j0APoM+ANSOPgA4AT4A+IE+AJAavQDwB74AINE8ADAlPQBYmb0AAHA6AG6XvgBIOT4AXBS+AJAavQDgKz0AMLs9AFwYvgBegL4AAKy8AKhwPgBA+jwA0JY9AJjdPQAAcrsAIDQ+AAaCPgDsAD4AmDW+ANAevgA8qT4AgIu7ANCsvQB0aj4A8Eq9AFAEvgA6g74AuJM9AFKbvgBA6L0A0o4+AFANPgAW774A9Fg+AJAVPgB4uz0AuDq+AKBDPQDE0z4Aqo6+APDfvQAsMj4AYKw9ALCsvQBAp70AjME+ALgXPgAQJD0AuIs9APA8vgCAijsAJtI+AICUOwCGmT4AgPY8AMDYvQCgTT0AeEk+ALAuPQAQ+r0AgOg8APBoPQBoNj4AgPe9AM7TvgAAXT0AvpY+AJDkPgCQcD0Aipw+APBPPQB+nj4A9Js+AAwcPgAAQLsA9Cy+AG6APgBI9L0AREw+ADhGvgCIED4AANi5APDOPQCAX70ARoU+AGQ0PgCO6D4AwIQ8AGiqPgDAKD0AFBY/AFiOvQCYp70AADm8AN8QPwAOhj4AjHw+AD6FPgBMBz4AGC++ADBdvQCAQLwAoGs9ABAhPgDY6L4AAAW+ANC3vQBA5TwANCI+ANCYPQDAbD0AhSS/AAi5PgDAHj4AiAo+AICuPQA6rD4ASCi+AODQPQAOkz4AYLy8AEBwPgAIL74A6DC+APRTPgDQVj0AEE09ANQdvgDg4jwAqwY/AOATPgB2jT4AoPy9AHiivQDsHz4AGFM+AFQFPgAIbL4AoNK8AAAuuwAssr4AgEq9AIgAPgDIdD4AAAe+AMBRPABw3z0A2PU+ABDXPQAAvzwAgB+8AAQePwCgj74AgNu8ALaCPgCYsr0AkIo+AGDFPQCQGr0A4Ku9AHA6vgAwfD0AmHQ+AEwWvgCG1T4AGMI9AIELPwAAErwAYKa8AIBhPgCcRj4APJk+AAAeuwCM4L4Aspg+AEBBPQDOmj4AII08AIADPABELT4Apqk+AF7/vgBkKT4A4AU+AFj6PQDyjD4ArCE+AECuPAAAdj4AQBe9APBkPQBOpb4ASGQ+ANgmvgCukT4A9BK+ACRmPgB06z4AwB69AAAovQDsej4AMIK9AEKwvgDkeL4A8NU9ADrmPgDAkL0AXH6+ABQxvgDM7j4ABHE+AMQKvgB8Mj4ABAS+AHC9vQAKqD4AKAa+APBPvQAAJD4ApFg+AOkMPwBAqLwAcFi+ADxSvgAYkj4AsBu+ANiHPQDopT0AQF29AHgFPgBqlz4ABGC+AEA9vgAgUL0ADAo+AED/PABkbD4AREO+AAAovAAAEjsAzsU+AEKlPgAaqT4APCa+APjSPgCwWL0A/Bc+AEjBPgCg7bwAsMo+AOATPgB4pz0AGCa+ALAVvgCwa70ArGC+AKbKPgAqoj4AfSU/ANctvwBW6T4AoIU9AHwmPgD0oL4AUJ29AIQdPgDQoz4A0vI+AGDKvQDw8j0AQC2+AADIvABgej0ANH8+ACSpPgDzAr8AhAo+AFUNvwDqkj4AqEc+AGhSPgBOgr8AIS6/AOA9PQBwlD0AqwI/ALCWvQDI7L0Afp++AJrsPgBYVb4ASo4+ADBzPgCS0j4AQqM+ANQgPgCQrD4AqN8+AEA4PgBACz0AALC9APtDPwDeor4AmOE+AADGvQDG/T4A7qK+AMQ5vgAInD4AsCC+AIREvgBI1r0ADAc/AFiQPgAACb4AWI6+AABrPADYMz4Aztk+AJAVPQC0Z74AtJy+ACirvQCA8rwAgqE+AOooPwBe8b4ABJY+AFR6vgAoDb4ArtE+AFBSPQBUoD4A+oU+ALBIvQBKtD4AlCk+AN7fvgAK1z4AdOO+AKgQPgBYNT4AwAE9AABcuwCgNL0AGIC+ABBGvgDSrb4Afho/AJr3PgB8LD4A4Dk+AKAtvgAYsT0A0IA9AMBMPAAA+bwAcra+AK4xPwDcJb4A4Is/AMDRvABJcz8A4CK9ADTEPgDAoTwASDI+ANyJPgBUVD4AAJ+8ACTevgCwzz4Abkw/AMDMPQAgID0AcOe+ABSvPgBYwj4Amy6/ADSCvgCYaj4AmBC/AACVuwDUyj4A8Fi+APCdvgAAfb0AJBa/AKShPgCuOL8AYNK9AFA2PQCwAT8AGFi+AIBAvQB8P74AADq9AGBPPgBUQD8AgCu/AETuvgBkfD8AsCQ+AAT5vgAgVb4AoL49AITwvgBsMr8A1Le+AB4RPwBANb8A6mK/AEhZvgCA070AULI9ABwlPwBgE78AcOo+AAlqvwDA0r4AoAS+AAYbPwASsT4AAL4+AAwmvwCACL0ANKs+AAgmvwD8sD4ABKU/AMSKvgDIXT4ADHc/AMCjvQBAPTwAZO8+ALwoPwCUoD4A8Ak/gA6BPwDAID4AYI2+gEyoPwBglr4A0BC+AGgzvgCFXL8A4q0+AHS/PgAgwL0ALac/AFwGPgAAlT4Axpo/AI02PwCExT4AcBk+AIgwPwA0mD4At5w/AFQDPwCeDj8AyFQ/AFRZPwBAgrwArmq/ALPpPwC0Tz8A0Fq/ANDrPgB1nj8AGM6+AEpZPwDgcb4AgEC+ANQAvwBWWT8AQAC/AMBfvgBMfz8Axae/AEomvwBmBL8AwMu9AE26PwDSJT8Ayg8/AMYDvwDgOT0AVC8/AHILPwAk/L4AChq/AEWQPwBeaj8A4Fk+AKhjPgA8hz8ATIA+AGBVPQAqgj8AsGg+AE5UvwDJjT8ANJU+AHI6vwDMgD8APOq+AKB9PwDUAD8APdE/AOOfPwCxOUAAIPC+AETfPgBQwj0AeAU/AOB3PwDA9r0AgYG/AExJvwDgt70ApC8/ACSGvgDg5T8AoGM+AOG0PwDetT8AJN0+ACBzPgBYaj4APqE/AHgmPwAMbT8AEps/AMoVPwAsZT8A5Jw/ADBBPwAICz4A6IM/AFDZPQBcpT8A9K4+AESCPwDXuD8A0lO/AK4avwAFoT8ARr8/AACKOwA9gT8AgNm9AOgNPgCOvj8AMLm+AKY6PwCefT8AuD0+AH4UPwBQL78AFH4/AHQrPwBgGb7QQIlBALhoP0CAN0CwNxZBYC+YQDCcJ0EghD5BALBHvYAApr8A2My/ABk5QYCwB0CAwKU/ALAoPoBqOUAAhsg/QKQ0QGDcEEHgD47AQG+cQKC1iEEAFx6/wD4QQYCW+78ANkJAQEOywGB1IkEADCfAcGyOQQBTBEAg8L1AAIwJwACndEAAXEM+YCwWQYBgAUDABQpB4DDOQIA9gcAA+TI/gK7TPwB6hb+wsBtBAJSbP4BYXUAggcVAoKLEwABi7L8QbTdBQDj4QIDtP0BAhkJAgP1QQTCpMEFgwfpAAFAVPcB1vEAQmwVBgCNbQICSyEAAQXDAwJL5QBDoKEEAUgE/gBytvwAVAj/AW3VAgH6kvwDq3r9A9MHAwOLaQACG8r4A3ge/QArmQAAV5r8A6Os+sAgOQQB5qT+AuOJAwDBtwNAXOEFgyDBBQIsWwCjY2MHgvelAAE0zQcBTdEAAMSxBAOhlQLCkKEFgIs3AoDgtQSDPAEFAKH/AAKpKQABUCcCAWNJAAKRVPyBxrkAACChB"},"shape":[1500],"dtype":"float32","order":"little"}],["ObsValueMinusGsiHofXBc_colon_colon_brightnessTemperature",{"type":"ndarray","array":{"type":"bytes","data":"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"},"shape":[1500],"dtype":"float32","order":"little"}],["ObsValueMinusHofX_colon_colon_brightnessTemperature",{"type":"ndarray","array":{"type":"bytes","data":"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"},"shape":[1500],"dtype":"float32","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1048","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1049"}}},"glyph":{"type":"object","name":"Scatter","id":"p1044","attributes":{"tags":["apply_ranges"],"x":{"type":"field","field":"ObsValueMinusGsiHofXBc::brightnessTemperature"},"y":{"type":"field","field":"ObsValueMinusHofX::brightnessTemperature"},"size":{"type":"value","value":4.47213595499958},"line_color":{"type":"value","value":"#0000ff"},"fill_color":{"type":"value","value":"#0000ff"},"hatch_color":{"type":"value","value":"#0000ff"}}},"selection_glyph":{"type":"object","name":"Scatter","id":"p1050","attributes":{"tags":["apply_ranges"],"x":{"type":"field","field":"ObsValueMinusGsiHofXBc::brightnessTemperature"},"y":{"type":"field","field":"ObsValueMinusHofX::brightnessTemperature"},"size":{"type":"value","value":4.47213595499958},"angle":{"type":"value","value":0.0},"line_color":{"type":"value","value":"#0000ff"},"line_alpha":{"type":"value","value":1.0},"line_width":{"type":"value","value":1},"line_join":{"type":"value","value":"bevel"},"line_cap":{"type":"value","value":"butt"},"line_dash":{"type":"value","value":[]},"line_dash_offset":{"type":"value","value":0},"fill_color":{"type":"value","value":"#0000ff"},"fill_alpha":{"type":"value","value":1.0},"hatch_color":{"type":"value","value":"#0000ff"},"hatch_alpha":{"type":"value","value":1.0},"hatch_scale":{"type":"value","value":12.0},"hatch_pattern":{"type":"value","value":null},"hatch_weight":{"type":"value","value":1.0},"marker":{"type":"value","value":"circle"}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1045","attributes":{"tags":["apply_ranges"],"x":{"type":"field","field":"ObsValueMinusGsiHofXBc::brightnessTemperature"},"y":{"type":"field","field":"ObsValueMinusHofX::brightnessTemperature"},"size":{"type":"value","value":4.47213595499958},"line_color":{"type":"value","value":"#0000ff"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#0000ff"},"fill_alpha":{"type":"value","value":0.1},"hatch_color":{"type":"value","value":"#0000ff"},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1046","attributes":{"tags":["apply_ranges"],"x":{"type":"field","field":"ObsValueMinusGsiHofXBc::brightnessTemperature"},"y":{"type":"field","field":"ObsValueMinusHofX::brightnessTemperature"},"size":{"type":"value","value":4.47213595499958},"line_color":{"type":"value","value":"#0000ff"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#0000ff"},"fill_alpha":{"type":"value","value":0.2},"hatch_color":{"type":"value","value":"#0000ff"},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1019","attributes":{"tools":[{"type":"object","name":"HoverTool","id":"p1009","attributes":{"tags":["hv_created"],"renderers":[{"id":"p1047"}],"tooltips":[["ObsValueMinusGsiHofXBc::brightnessTemperature","@{ObsValueMinusGsiHofXBc_colon_colon_brightnessTemperature}"],["ObsValueMinusHofX::brightnessTemperature","@{ObsValueMinusHofX_colon_colon_brightnessTemperature}"]]}},{"type":"object","name":"SaveTool","id":"p1032"},{"type":"object","name":"PanTool","id":"p1033"},{"type":"object","name":"WheelZoomTool","id":"p1034"},{"type":"object","name":"BoxZoomTool","id":"p1035","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1036","attributes":{"syncable":false,"level":"overlay","visible":false,"left_units":"canvas","right_units":"canvas","bottom_units":"canvas","top_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"ResetTool","id":"p1037"}],"active_drag":{"id":"p1033"},"active_scroll":{"id":"p1034"}}},"left":[{"type":"object","name":"LinearAxis","id":"p1027","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1028","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1029"},"axis_label":"ObsValueMinusHofX::brightnessTemperature","major_label_policy":{"type":"object","name":"AllLabels","id":"p1030"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1022","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1023","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1024"},"axis_label":"ObsValueMinusGsiHofXBc::brightnessTemperature","major_label_policy":{"type":"object","name":"AllLabels","id":"p1025"}}}],"center":[{"type":"object","name":"Grid","id":"p1026","attributes":{"axis":{"id":"p1022"},"grid_line_color":null}},{"type":"object","name":"Grid","id":"p1031","attributes":{"dimension":1,"axis":{"id":"p1027"},"grid_line_color":null}}],"min_border_top":10,"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"output_backend":"webgl"}},{"type":"object","name":"Spacer","id":"p1052","attributes":{"name":"HSpacer01484","stylesheets":["\n:host(.pn-loading.pn-arc):before, .pn-loading.pn-arc:before {\n  background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJtYXJnaW46IGF1dG87IGJhY2tncm91bmQ6IG5vbmU7IGRpc3BsYXk6IGJsb2NrOyBzaGFwZS1yZW5kZXJpbmc6IGF1dG87IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiPiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzNjM2MzIiBzdHJva2Utd2lkdGg9IjEwIiByPSIzNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTY0LjkzMzYxNDMxMzQ2NDE1IDU2Ljk3Nzg3MTQzNzgyMTM4Ij4gICAgPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBkdXI9IjFzIiB2YWx1ZXM9IjAgNTAgNTA7MzYwIDUwIDUwIiBrZXlUaW1lcz0iMDsxIj48L2FuaW1hdGVUcmFuc2Zvcm0+ICA8L2NpcmNsZT48L3N2Zz4=\");\n  background-size: auto calc(min(50%, 400px));\n}",{"id":"p1005"},{"id":"p1003"},{"id":"p1004"}],"margin":0,"sizing_mode":"stretch_width","align":"start"}}]}}],"defs":[{"type":"model","name":"ReactiveHTML1"},{"type":"model","name":"FlexBox1","properties":[{"name":"align_content","kind":"Any","default":"flex-start"},{"name":"align_items","kind":"Any","default":"flex-start"},{"name":"flex_direction","kind":"Any","default":"row"},{"name":"flex_wrap","kind":"Any","default":"wrap"},{"name":"justify_content","kind":"Any","default":"flex-start"}]},{"type":"model","name":"FloatPanel1","properties":[{"name":"config","kind":"Any","default":{"type":"map"}},{"name":"contained","kind":"Any","default":true},{"name":"position","kind":"Any","default":"right-top"},{"name":"offsetx","kind":"Any","default":null},{"name":"offsety","kind":"Any","default":null},{"name":"theme","kind":"Any","default":"primary"},{"name":"status","kind":"Any","default":"normalized"}]},{"type":"model","name":"GridStack1","properties":[{"name":"mode","kind":"Any","default":"warn"},{"name":"ncols","kind":"Any","default":null},{"name":"nrows","kind":"Any","default":null},{"name":"allow_resize","kind":"Any","default":true},{"name":"allow_drag","kind":"Any","default":true},{"name":"state","kind":"Any","default":[]}]},{"type":"model","name":"drag1","properties":[{"name":"slider_width","kind":"Any","default":5},{"name":"slider_color","kind":"Any","default":"black"},{"name":"value","kind":"Any","default":50}]},{"type":"model","name":"click1","properties":[{"name":"terminal_output","kind":"Any","default":""},{"name":"debug_name","kind":"Any","default":""},{"name":"clears","kind":"Any","default":0}]},{"type":"model","name":"FastWrapper1","properties":[{"name":"object","kind":"Any","default":null},{"name":"style","kind":"Any","default":null}]},{"type":"model","name":"NotificationAreaBase1","properties":[{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0}]},{"type":"model","name":"NotificationArea1","properties":[{"name":"notifications","kind":"Any","default":[]},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0},{"name":"types","kind":"Any","default":[{"type":"map","entries":[["type","warning"],["background","#ffc107"],["icon",{"type":"map","entries":[["className","fas fa-exclamation-triangle"],["tagName","i"],["color","white"]]}]]},{"type":"map","entries":[["type","info"],["background","#007bff"],["icon",{"type":"map","entries":[["className","fas fa-info-circle"],["tagName","i"],["color","white"]]}]]}]}]},{"type":"model","name":"Notification","properties":[{"name":"background","kind":"Any","default":null},{"name":"duration","kind":"Any","default":3000},{"name":"icon","kind":"Any","default":null},{"name":"message","kind":"Any","default":""},{"name":"notification_type","kind":"Any","default":null},{"name":"_destroyed","kind":"Any","default":false}]},{"type":"model","name":"TemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"BootstrapTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"MaterialTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]}]}};
+  var render_items = [{"docid":"97d7814a-eb3f-49e2-9244-80f273da1167","roots":{"p1002":"d53a171c-ed20-45df-a2af-8cfe223b1e24"},"root_ids":["p1002"]}];
+  var docs = Object.values(docs_json)
+  if (!docs) {
+    return
+  }
+  const py_version = docs[0].version.replace('rc', '-rc.').replace('.dev', '-dev.')
+  const is_dev = py_version.indexOf("+") !== -1 || py_version.indexOf("-") !== -1
+  function embed_document(root) {
+    var Bokeh = get_bokeh(root)
+    Bokeh.embed.embed_items_notebook(docs_json, render_items);
+    for (const render_item of render_items) {
+      for (const root_id of render_item.root_ids) {
+	const id_el = document.getElementById(root_id)
+	if (id_el.children.length && (id_el.children[0].className === 'bk-root')) {
+	  const root_el = id_el.children[0]
+	  root_el.id = root_el.id + '-rendered'
+	}
+      }
+    }
+  }
+  function get_bokeh(root) {
+    if (root.Bokeh === undefined) {
+      return null
+    } else if (root.Bokeh.version !== py_version && !is_dev) {
+      if (root.Bokeh.versions === undefined || !root.Bokeh.versions.has(py_version)) {
+	return null
+      }
+      return root.Bokeh.versions.get(py_version);
+    } else if (root.Bokeh.version === py_version) {
+      return root.Bokeh
+    }
+    return null
+  }
+  function is_loaded(root) {
+    var Bokeh = get_bokeh(root)
+    return (Bokeh != null && Bokeh.Panel !== undefined)
+  }
+  if (is_loaded(root)) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (is_loaded(root)) {
+        clearInterval(timer);
+        embed_document(root);
+      } else if (document.readyState == "complete") {
+        attempts++;
+        if (attempts > 200) {
+          clearInterval(timer);
+	  var Bokeh = get_bokeh(root)
+	  if (Bokeh == null || Bokeh.Panel == null) {
+            console.warn("Panel: ERROR: Unable to run Panel code because Bokeh or Panel library is missing");
+	  } else {
+	    console.warn("Panel: WARNING: Attempting to render but not all required libraries could be resolved.")
+	    embed_document(root)
+	  }
+        }
+      }
+    }, 25, root)
+  }
+})(window);</script></div></div>
+</div>
+</section>
+<section id="accept-where-demonstration-with-aircraft">
+<h3>Accept where demonstration with Aircraft<a class="headerlink" href="#accept-where-demonstration-with-aircraft" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eva_aircraft</span><span class="o">.</span><span class="n">accept_where</span><span class="p">(</span><span class="n">new_name</span><span class="o">=</span><span class="s1">'EffectiveErrorPassedQc'</span><span class="p">,</span> 
+                          <span class="n">starting_field</span><span class="o">=</span><span class="s1">'EffectiveError'</span><span class="p">,</span>
+                          <span class="n">where</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'EffectiveQC == 0'</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO EvaInteractive: Added 'EffectiveErrorPassedQc' to data collection.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eva_aircraft</span><span class="o">.</span><span class="n">accept_where</span><span class="p">(</span><span class="n">new_name</span><span class="o">=</span><span class="s1">'GsiFinalObsErrorPassedQc'</span><span class="p">,</span>
+                          <span class="n">starting_field</span> <span class="o">=</span> <span class="s1">'GsiFinalObsError'</span><span class="p">,</span>
+                          <span class="n">where</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'GsiEffectiveQC == 0'</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO EvaInteractive: Added 'GsiFinalObsErrorPassedQc' to data collection.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eva_aircraft</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s1">'GsiFinalObsErrorPassedQc::airTemperature'</span><span class="p">,</span> 
+                     <span class="s1">'EffectiveErrorPassedQc::airTemperature'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="p1060">
+<div data-root-id="p1060" id="a74c5429-844b-41dd-9df1-1ccdb0391553" style="display: contents;"></div>
+</div>
+<script type="application/javascript">(function(root) {
+  var docs_json = {"809ff1cd-0469-412b-8107-e4bfa7df9102":{"version":"3.2.0","title":"Bokeh Application","roots":[{"type":"object","name":"Row","id":"p1060","attributes":{"name":"Row01595","tags":["embedded"],"stylesheets":["\n:host(.pn-loading.pn-arc):before, .pn-loading.pn-arc:before {\n  background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJtYXJnaW46IGF1dG87IGJhY2tncm91bmQ6IG5vbmU7IGRpc3BsYXk6IGJsb2NrOyBzaGFwZS1yZW5kZXJpbmc6IGF1dG87IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiPiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzNjM2MzIiBzdHJva2Utd2lkdGg9IjEwIiByPSIzNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTY0LjkzMzYxNDMxMzQ2NDE1IDU2Ljk3Nzg3MTQzNzgyMTM4Ij4gICAgPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBkdXI9IjFzIiB2YWx1ZXM9IjAgNTAgNTA7MzYwIDUwIDUwIiBrZXlUaW1lcz0iMDsxIj48L2FuaW1hdGVUcmFuc2Zvcm0+ICA8L2NpcmNsZT48L3N2Zz4=\");\n  background-size: auto calc(min(50%, 400px));\n}",{"type":"object","name":"ImportedStyleSheet","id":"p1063","attributes":{"url":"https://cdn.holoviz.org/panel/1.2.0/dist/css/loading.css"}},{"type":"object","name":"ImportedStyleSheet","id":"p1112","attributes":{"url":"https://cdn.holoviz.org/panel/1.2.0/dist/css/listpanel.css"}},{"type":"object","name":"ImportedStyleSheet","id":"p1061","attributes":{"url":"https://cdn.holoviz.org/panel/1.2.0/dist/bundled/theme/default.css"}},{"type":"object","name":"ImportedStyleSheet","id":"p1062","attributes":{"url":"https://cdn.holoviz.org/panel/1.2.0/dist/bundled/theme/native.css"}}],"min_width":400,"margin":0,"sizing_mode":"stretch_width","align":"start","children":[{"type":"object","name":"Spacer","id":"p1064","attributes":{"name":"HSpacer01606","stylesheets":["\n:host(.pn-loading.pn-arc):before, .pn-loading.pn-arc:before {\n  background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJtYXJnaW46IGF1dG87IGJhY2tncm91bmQ6IG5vbmU7IGRpc3BsYXk6IGJsb2NrOyBzaGFwZS1yZW5kZXJpbmc6IGF1dG87IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiPiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzNjM2MzIiBzdHJva2Utd2lkdGg9IjEwIiByPSIzNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTY0LjkzMzYxNDMxMzQ2NDE1IDU2Ljk3Nzg3MTQzNzgyMTM4Ij4gICAgPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBkdXI9IjFzIiB2YWx1ZXM9IjAgNTAgNTA7MzYwIDUwIDUwIiBrZXlUaW1lcz0iMDsxIj48L2FuaW1hdGVUcmFuc2Zvcm0+ICA8L2NpcmNsZT48L3N2Zz4=\");\n  background-size: auto calc(min(50%, 400px));\n}",{"id":"p1063"},{"id":"p1061"},{"id":"p1062"}],"margin":0,"sizing_mode":"stretch_width","align":"start"}},{"type":"object","name":"Figure","id":"p1068","attributes":{"width":400,"height":400,"margin":[5,10],"sizing_mode":"fixed","align":"start","x_range":{"type":"object","name":"Range1d","id":"p1065","attributes":{"tags":[[["GsiFinalObsErrorPassedQc::airTemperature","GsiFinalObsErrorPassedQc::airTemperature",null]]],"start":0.7176226854324341,"end":4.106150460243225,"reset_start":0.7176226854324341,"reset_end":4.106150460243225}},"y_range":{"type":"object","name":"Range1d","id":"p1066","attributes":{"tags":[[["EffectiveErrorPassedQc::airTemperature","EffectiveErrorPassedQc::airTemperature",null]]],"start":0.9529399991035461,"end":1.5176600098609925,"reset_start":0.9529399991035461,"reset_end":1.5176600098609925}},"x_scale":{"type":"object","name":"LinearScale","id":"p1078"},"y_scale":{"type":"object","name":"LinearScale","id":"p1079"},"title":{"type":"object","name":"Title","id":"p1071","attributes":{"text_color":"black","text_font_size":"12pt"}},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1105","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1096","attributes":{"selected":{"type":"object","name":"Selection","id":"p1097","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1098"},"data":{"type":"map","entries":[["GsiFinalObsErrorPassedQc::airTemperature",{"type":"ndarray","array":{"type":"bytes","data":"AACAPwAAgD8AAIA/AACAP+U4hz+9oJI/AACAP1Lthj8AAIA/jRfDPz75xz/LBtk/AACAP3rsqz8AAIA/AACAPwAAgD8AAIA/AACAP1O70z8AAIA/AACAP2VBhz8AAIA/HbSLPwAAgD8AAIA/AACAPwAAgD84H7s/AACAPxp3V0A05N8/J8+UPzcFgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/T+mXPwAAgD91mqI/AACAPzdzgj8AAIA/OxXBPwAAgD8AAIA/AACAP46F1j97V4M/wawtQLO4dEDdQKk/KVCQP9Q5gz9BwYA/yuv/PwAAgD8AAIA/YISdPwAAgD+4Lp8/rCeqP2tYgT8AAIA/LqqdPwAAgD9O8rM/e/cqQHv2uD8XKKY/AACAP0zywD/PxNQ/lTyWPwAAgD+5SJ4/UjmBP0AciD9FJYo/AACAP7OWjD9Njr0/KaCAPwAAgD8AAIA/AACAP1WKtD+MjLw/qhGnPw=="},"shape":[94],"dtype":"float32","order":"little"}],["EffectiveErrorPassedQc::airTemperature",{"type":"ndarray","array":{"type":"bytes","data":"AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/RtKhP6fDtD9nHJo/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAP2VBhz8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD84H7s/AACAP9YpuT8b9p4/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/T+mXPwAAgD+UuZg/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD97V4M/PIGoP588vD/uZ4c/AACAPwAAgD8AAIA/mqqwPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD/cvaQ/9uOzP4QNjz8XKKY/AACAP0n3mD81P6Y/2hCNPwAAgD8AAIA/AACAPwAAgD9FJYo/AACAPwAAgD8hLqc/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPw=="},"shape":[94],"dtype":"float32","order":"little"}],["GsiFinalObsErrorPassedQc_colon_colon_airTemperature",{"type":"ndarray","array":{"type":"bytes","data":"AACAPwAAgD8AAIA/AACAP+U4hz+9oJI/AACAP1Lthj8AAIA/jRfDPz75xz/LBtk/AACAP3rsqz8AAIA/AACAPwAAgD8AAIA/AACAP1O70z8AAIA/AACAP2VBhz8AAIA/HbSLPwAAgD8AAIA/AACAPwAAgD84H7s/AACAPxp3V0A05N8/J8+UPzcFgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/T+mXPwAAgD91mqI/AACAPzdzgj8AAIA/OxXBPwAAgD8AAIA/AACAP46F1j97V4M/wawtQLO4dEDdQKk/KVCQP9Q5gz9BwYA/yuv/PwAAgD8AAIA/YISdPwAAgD+4Lp8/rCeqP2tYgT8AAIA/LqqdPwAAgD9O8rM/e/cqQHv2uD8XKKY/AACAP0zywD/PxNQ/lTyWPwAAgD+5SJ4/UjmBP0AciD9FJYo/AACAP7OWjD9Njr0/KaCAPwAAgD8AAIA/AACAP1WKtD+MjLw/qhGnPw=="},"shape":[94],"dtype":"float32","order":"little"}],["EffectiveErrorPassedQc_colon_colon_airTemperature",{"type":"ndarray","array":{"type":"bytes","data":"AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/RtKhP6fDtD9nHJo/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAP2VBhz8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD84H7s/AACAP9YpuT8b9p4/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/T+mXPwAAgD+UuZg/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD97V4M/PIGoP588vD/uZ4c/AACAPwAAgD8AAIA/mqqwPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD/cvaQ/9uOzP4QNjz8XKKY/AACAP0n3mD81P6Y/2hCNPwAAgD8AAIA/AACAPwAAgD9FJYo/AACAPwAAgD8hLqc/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPw=="},"shape":[94],"dtype":"float32","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1106","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1107"}}},"glyph":{"type":"object","name":"Scatter","id":"p1102","attributes":{"tags":["apply_ranges"],"x":{"type":"field","field":"GsiFinalObsErrorPassedQc::airTemperature"},"y":{"type":"field","field":"EffectiveErrorPassedQc::airTemperature"},"size":{"type":"value","value":4.47213595499958},"line_color":{"type":"value","value":"#0000ff"},"fill_color":{"type":"value","value":"#0000ff"},"hatch_color":{"type":"value","value":"#0000ff"}}},"selection_glyph":{"type":"object","name":"Scatter","id":"p1108","attributes":{"tags":["apply_ranges"],"x":{"type":"field","field":"GsiFinalObsErrorPassedQc::airTemperature"},"y":{"type":"field","field":"EffectiveErrorPassedQc::airTemperature"},"size":{"type":"value","value":4.47213595499958},"angle":{"type":"value","value":0.0},"line_color":{"type":"value","value":"#0000ff"},"line_alpha":{"type":"value","value":1.0},"line_width":{"type":"value","value":1},"line_join":{"type":"value","value":"bevel"},"line_cap":{"type":"value","value":"butt"},"line_dash":{"type":"value","value":[]},"line_dash_offset":{"type":"value","value":0},"fill_color":{"type":"value","value":"#0000ff"},"fill_alpha":{"type":"value","value":1.0},"hatch_color":{"type":"value","value":"#0000ff"},"hatch_alpha":{"type":"value","value":1.0},"hatch_scale":{"type":"value","value":12.0},"hatch_pattern":{"type":"value","value":null},"hatch_weight":{"type":"value","value":1.0},"marker":{"type":"value","value":"circle"}}},"nonselection_glyph":{"type":"object","name":"Scatter","id":"p1103","attributes":{"tags":["apply_ranges"],"x":{"type":"field","field":"GsiFinalObsErrorPassedQc::airTemperature"},"y":{"type":"field","field":"EffectiveErrorPassedQc::airTemperature"},"size":{"type":"value","value":4.47213595499958},"line_color":{"type":"value","value":"#0000ff"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#0000ff"},"fill_alpha":{"type":"value","value":0.1},"hatch_color":{"type":"value","value":"#0000ff"},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Scatter","id":"p1104","attributes":{"tags":["apply_ranges"],"x":{"type":"field","field":"GsiFinalObsErrorPassedQc::airTemperature"},"y":{"type":"field","field":"EffectiveErrorPassedQc::airTemperature"},"size":{"type":"value","value":4.47213595499958},"line_color":{"type":"value","value":"#0000ff"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#0000ff"},"fill_alpha":{"type":"value","value":0.2},"hatch_color":{"type":"value","value":"#0000ff"},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1077","attributes":{"tools":[{"type":"object","name":"HoverTool","id":"p1067","attributes":{"tags":["hv_created"],"renderers":[{"id":"p1105"}],"tooltips":[["GsiFinalObsErrorPassedQc::airTemperature","@{GsiFinalObsErrorPassedQc_colon_colon_airTemperature}"],["EffectiveErrorPassedQc::airTemperature","@{EffectiveErrorPassedQc_colon_colon_airTemperature}"]]}},{"type":"object","name":"SaveTool","id":"p1090"},{"type":"object","name":"PanTool","id":"p1091"},{"type":"object","name":"WheelZoomTool","id":"p1092"},{"type":"object","name":"BoxZoomTool","id":"p1093","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1094","attributes":{"syncable":false,"level":"overlay","visible":false,"left_units":"canvas","right_units":"canvas","bottom_units":"canvas","top_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"ResetTool","id":"p1095"}],"active_drag":{"id":"p1091"},"active_scroll":{"id":"p1092"}}},"left":[{"type":"object","name":"LinearAxis","id":"p1085","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1086","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1087"},"axis_label":"EffectiveErrorPassedQc::airTemperature","major_label_policy":{"type":"object","name":"AllLabels","id":"p1088"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1080","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1081","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1082"},"axis_label":"GsiFinalObsErrorPassedQc::airTemperature","major_label_policy":{"type":"object","name":"AllLabels","id":"p1083"}}}],"center":[{"type":"object","name":"Grid","id":"p1084","attributes":{"axis":{"id":"p1080"},"grid_line_color":null}},{"type":"object","name":"Grid","id":"p1089","attributes":{"dimension":1,"axis":{"id":"p1085"},"grid_line_color":null}}],"min_border_top":10,"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"output_backend":"webgl"}},{"type":"object","name":"Spacer","id":"p1110","attributes":{"name":"HSpacer01609","stylesheets":["\n:host(.pn-loading.pn-arc):before, .pn-loading.pn-arc:before {\n  background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJtYXJnaW46IGF1dG87IGJhY2tncm91bmQ6IG5vbmU7IGRpc3BsYXk6IGJsb2NrOyBzaGFwZS1yZW5kZXJpbmc6IGF1dG87IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiPiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzNjM2MzIiBzdHJva2Utd2lkdGg9IjEwIiByPSIzNSIgc3Ryb2tlLWRhc2hhcnJheT0iMTY0LjkzMzYxNDMxMzQ2NDE1IDU2Ljk3Nzg3MTQzNzgyMTM4Ij4gICAgPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBkdXI9IjFzIiB2YWx1ZXM9IjAgNTAgNTA7MzYwIDUwIDUwIiBrZXlUaW1lcz0iMDsxIj48L2FuaW1hdGVUcmFuc2Zvcm0+ICA8L2NpcmNsZT48L3N2Zz4=\");\n  background-size: auto calc(min(50%, 400px));\n}",{"id":"p1063"},{"id":"p1061"},{"id":"p1062"}],"margin":0,"sizing_mode":"stretch_width","align":"start"}}]}}],"defs":[{"type":"model","name":"ReactiveHTML1"},{"type":"model","name":"FlexBox1","properties":[{"name":"align_content","kind":"Any","default":"flex-start"},{"name":"align_items","kind":"Any","default":"flex-start"},{"name":"flex_direction","kind":"Any","default":"row"},{"name":"flex_wrap","kind":"Any","default":"wrap"},{"name":"justify_content","kind":"Any","default":"flex-start"}]},{"type":"model","name":"FloatPanel1","properties":[{"name":"config","kind":"Any","default":{"type":"map"}},{"name":"contained","kind":"Any","default":true},{"name":"position","kind":"Any","default":"right-top"},{"name":"offsetx","kind":"Any","default":null},{"name":"offsety","kind":"Any","default":null},{"name":"theme","kind":"Any","default":"primary"},{"name":"status","kind":"Any","default":"normalized"}]},{"type":"model","name":"GridStack1","properties":[{"name":"mode","kind":"Any","default":"warn"},{"name":"ncols","kind":"Any","default":null},{"name":"nrows","kind":"Any","default":null},{"name":"allow_resize","kind":"Any","default":true},{"name":"allow_drag","kind":"Any","default":true},{"name":"state","kind":"Any","default":[]}]},{"type":"model","name":"drag1","properties":[{"name":"slider_width","kind":"Any","default":5},{"name":"slider_color","kind":"Any","default":"black"},{"name":"value","kind":"Any","default":50}]},{"type":"model","name":"click1","properties":[{"name":"terminal_output","kind":"Any","default":""},{"name":"debug_name","kind":"Any","default":""},{"name":"clears","kind":"Any","default":0}]},{"type":"model","name":"FastWrapper1","properties":[{"name":"object","kind":"Any","default":null},{"name":"style","kind":"Any","default":null}]},{"type":"model","name":"NotificationAreaBase1","properties":[{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0}]},{"type":"model","name":"NotificationArea1","properties":[{"name":"notifications","kind":"Any","default":[]},{"name":"position","kind":"Any","default":"bottom-right"},{"name":"_clear","kind":"Any","default":0},{"name":"types","kind":"Any","default":[{"type":"map","entries":[["type","warning"],["background","#ffc107"],["icon",{"type":"map","entries":[["className","fas fa-exclamation-triangle"],["tagName","i"],["color","white"]]}]]},{"type":"map","entries":[["type","info"],["background","#007bff"],["icon",{"type":"map","entries":[["className","fas fa-info-circle"],["tagName","i"],["color","white"]]}]]}]}]},{"type":"model","name":"Notification","properties":[{"name":"background","kind":"Any","default":null},{"name":"duration","kind":"Any","default":3000},{"name":"icon","kind":"Any","default":null},{"name":"message","kind":"Any","default":""},{"name":"notification_type","kind":"Any","default":null},{"name":"_destroyed","kind":"Any","default":false}]},{"type":"model","name":"TemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"BootstrapTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]},{"type":"model","name":"MaterialTemplateActions1","properties":[{"name":"open_modal","kind":"Any","default":0},{"name":"close_modal","kind":"Any","default":0}]}]}};
+  var render_items = [{"docid":"809ff1cd-0469-412b-8107-e4bfa7df9102","roots":{"p1060":"a74c5429-844b-41dd-9df1-1ccdb0391553"},"root_ids":["p1060"]}];
+  var docs = Object.values(docs_json)
+  if (!docs) {
+    return
+  }
+  const py_version = docs[0].version.replace('rc', '-rc.').replace('.dev', '-dev.')
+  const is_dev = py_version.indexOf("+") !== -1 || py_version.indexOf("-") !== -1
+  function embed_document(root) {
+    var Bokeh = get_bokeh(root)
+    Bokeh.embed.embed_items_notebook(docs_json, render_items);
+    for (const render_item of render_items) {
+      for (const root_id of render_item.root_ids) {
+	const id_el = document.getElementById(root_id)
+	if (id_el.children.length && (id_el.children[0].className === 'bk-root')) {
+	  const root_el = id_el.children[0]
+	  root_el.id = root_el.id + '-rendered'
+	}
+      }
+    }
+  }
+  function get_bokeh(root) {
+    if (root.Bokeh === undefined) {
+      return null
+    } else if (root.Bokeh.version !== py_version && !is_dev) {
+      if (root.Bokeh.versions === undefined || !root.Bokeh.versions.has(py_version)) {
+	return null
+      }
+      return root.Bokeh.versions.get(py_version);
+    } else if (root.Bokeh.version === py_version) {
+      return root.Bokeh
+    }
+    return null
+  }
+  function is_loaded(root) {
+    var Bokeh = get_bokeh(root)
+    return (Bokeh != null && Bokeh.Panel !== undefined)
+  }
+  if (is_loaded(root)) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (is_loaded(root)) {
+        clearInterval(timer);
+        embed_document(root);
+      } else if (document.readyState == "complete") {
+        attempts++;
+        if (attempts > 200) {
+          clearInterval(timer);
+	  var Bokeh = get_bokeh(root)
+	  if (Bokeh == null || Bokeh.Panel == null) {
+            console.warn("Panel: ERROR: Unable to run Panel code because Bokeh or Panel library is missing");
+	  } else {
+	    console.warn("Panel: WARNING: Attempting to render but not all required libraries could be resolved.")
+	    embed_document(root)
+	  }
+        }
+      }
+    }, 25, root)
+  }
+})(window);</script></div></div>
+</div>
+</section>
+</section>
+<div id="scroller-right">This web page was generated from a Jupyter notebook and not all interactivity will work on this website. <a href="https://raw.githubusercontent.com/asewnath/eva-docs/main/examples/../notebooks/eva_example.ipynb">Right click to download and run locally</a> for full Python-backed interactivity.</div><hr class="docutils"/>
+<p><a class="reference external" href="https://raw.githubusercontent.com/asewnath/eva-docs/main/notebooks/eva_example.ipynb">Right click to download this notebook from GitHub.</a></p>
+</section>
+</div>
+</div>
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+<footer class="footer">
+<div class="footer-links">
+<ul>
+<li><span class="footer-title">Links</span></li>
+</ul>
+<ul>
+<li><span class="footer-title">Join Us</span></li>
+</ul>
+<ul class="copyright">
+<li>2023 NOAA-EMC, NASA-GMAO</li>
+</ul>
+</div>
+</footer>
+<!-- Google Analytics -->
+<!-- MathJax Config -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

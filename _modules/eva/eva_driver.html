@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8"/>
+<title>eva.eva_driver — 0.0.1 documentation</title>
+<meta content="Short description for html meta description." name="description"/>
+<meta content="NOAA-EMC, NASA-GMAO" name="author"/>
+<!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+<!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../_static/css/main.css" rel="stylesheet"/>
+<!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript">
+</script>
+<script src="../../_static/js/main.js"></script>
+<!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="../../_static/images/favicon.ico" rel="icon" type="image/png"/>
+<!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href="/_modules/eva/eva_driver.html" rel="canonical">
+</link></head>
+<body class="">
+<header class="navigation">
+<div class="wrapper">
+<a class="logo" href="../../index.html">
+<img alt="Logo" src="../../_static/images/logo.png"/>
+</a>
+<a class="navigation-menu logo-text" href="../../index.html"></a>
+<a class="navigation-menu-button" href="javascript:void(0)" id="js-mobile-menu">Menu</a>
+<nav>
+<ul class="navigation-menu show" id="js-navigation-menu">
+</ul>
+</nav>
+</div>
+</header>
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+<div class="docs section">
+<div id="hacketyhackhack"> <!-- style="width:20%;margin-right: 100px;"> --> <!--style="display: none;"> style="display:none;"> -->
+<div class="toc" style="width:15%; margin-right:20px;">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../eva_infrastructure/index.html">Eva Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagnostics/index.html">Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plot_tools/index.html">Plot Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../eva_example.html">Eva Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/index.html">API</a></li>
+</ul>
+</div>
+</div>
+<div class="content"> <!-- style="max-width:80%;margin-left:auto;margin-right: auto;">-->
+<h1>Source code for eva.eva_driver</h1><div class="highlight"><pre>
+<span></span><span class="c1"># (C) Copyright 2021-2023 NOAA/NWS/EMC</span>
+<span class="c1">#</span>
+<span class="c1"># (C) Copyright 2021-2023 United States Government as represented by the Administrator of the</span>
+<span class="c1"># National Aeronautics and Space Administration. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># This software is licensed under the terms of the Apache Licence Version 2.0</span>
+<span class="c1"># which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.</span>
+
+<span class="kn">from</span> <span class="nn">eva.utilities.logger</span> <span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span> <span class="nn">eva.utilities.timing</span> <span class="kn">import</span> <span class="n">Timing</span>
+<span class="kn">from</span> <span class="nn">eva.data.data_driver</span> <span class="kn">import</span> <span class="n">data_driver</span>
+<span class="kn">from</span> <span class="nn">eva.transforms.transform_driver</span> <span class="kn">import</span> <span class="n">transform_driver</span>
+<span class="kn">from</span> <span class="nn">eva.plot_tools.figure_driver</span> <span class="kn">import</span> <span class="n">figure_driver</span>
+<span class="kn">from</span> <span class="nn">eva.data.data_collections</span> <span class="kn">import</span> <span class="n">DataCollections</span>
+<span class="kn">from</span> <span class="nn">eva.utilities.utils</span> <span class="kn">import</span> <span class="n">load_yaml_file</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+
+<div class="viewcode-block" id="eva"><a class="viewcode-back" href="../../API/eva.html#eva.eva_driver.eva">[docs]</a><span class="k">def</span> <span class="nf">eva</span><span class="p">(</span><span class="n">eva_config</span><span class="p">,</span> <span class="n">eva_logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+    <span class="c1"># Create timing object</span>
+    <span class="n">timing</span> <span class="o">=</span> <span class="n">Timing</span><span class="p">()</span>
+
+    <span class="c1"># Create temporary logger</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="s1">'EvaSetup'</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Starting Eva'</span><span class="p">)</span>
+
+    <span class="c1"># Convert incoming config (either dictionary or file) to dictionary</span>
+    <span class="n">timing</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">'Generate Dictionary'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">eva_config</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">eva_dict</span> <span class="o">=</span> <span class="n">eva_config</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Create dictionary from the input file</span>
+        <span class="n">eva_dict</span> <span class="o">=</span> <span class="n">load_yaml_file</span><span class="p">(</span><span class="n">eva_config</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+    <span class="n">timing</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span><span class="s1">'Generate Dictionary'</span><span class="p">)</span>
+
+    <span class="c1"># Each diagnostic should have two dictionaries: data and graphics</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">sub_config</span> <span class="ow">in</span> <span class="n">eva_dict</span> <span class="k">for</span> <span class="n">sub_config</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'datasets'</span><span class="p">,</span> <span class="s1">'graphics'</span><span class="p">]):</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">"diagnostic config must contain 'datasets' and 'graphics'"</span>
+        <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="c1"># Create the data collections</span>
+    <span class="c1"># ---------------------------</span>
+    <span class="n">data_collections</span> <span class="o">=</span> <span class="n">DataCollections</span><span class="p">()</span>
+
+    <span class="c1"># Prepare diagnostic data</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Running data driver'</span><span class="p">)</span>
+    <span class="n">timing</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">'DataDriverExecute'</span><span class="p">)</span>
+    <span class="n">data_driver</span><span class="p">(</span><span class="n">eva_dict</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">,</span> <span class="n">timing</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+    <span class="n">timing</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span><span class="s1">'DataDriverExecute'</span><span class="p">)</span>
+
+    <span class="c1"># Create the transforms</span>
+    <span class="k">if</span> <span class="s1">'transforms'</span> <span class="ow">in</span> <span class="n">eva_dict</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Running transform driver'</span><span class="p">)</span>
+        <span class="n">timing</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">'TransformDriverExecute'</span><span class="p">)</span>
+        <span class="n">transform_driver</span><span class="p">(</span><span class="n">eva_dict</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">,</span> <span class="n">timing</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+        <span class="n">timing</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span><span class="s1">'TransformDriverExecute'</span><span class="p">)</span>
+
+    <span class="c1"># Generate figure(s)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Running figure driver'</span><span class="p">)</span>
+    <span class="n">timing</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s1">'FigureDriverExecute'</span><span class="p">)</span>
+    <span class="n">figure_driver</span><span class="p">(</span><span class="n">eva_dict</span><span class="p">,</span> <span class="n">data_collections</span><span class="p">,</span> <span class="n">timing</span><span class="p">,</span> <span class="n">logger</span><span class="p">)</span>
+    <span class="n">timing</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span><span class="s1">'FigureDriverExecute'</span><span class="p">)</span>
+
+    <span class="n">timing</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../API/eva.html#eva.eva_driver.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+
+    <span class="c1"># Arguments</span>
+    <span class="c1"># ---------</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'config_file'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">'Configuration YAML file for driving '</span> <span class="o">+</span>
+                        <span class="s1">'the diagnostic. See documentation/examples for how to configure the YAML.'</span><span class="p">)</span>
+
+    <span class="c1"># Get the configuation file</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+    <span class="n">config_file</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">config_file</span>
+
+    <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">config_file</span><span class="p">),</span> <span class="s2">"File "</span> <span class="o">+</span> <span class="n">config_file</span> <span class="o">+</span> <span class="s2">" not found"</span>
+
+    <span class="c1"># Run the diagnostic(s)</span>
+    <span class="n">eva</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span></div>
+
+
+<span class="c1"># --------------------------------------------------------------------------------------------------</span>
+</pre></div>
+</div>
+</div>
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+<footer class="footer">
+<div class="footer-links">
+<ul>
+<li><span class="footer-title">Links</span></li>
+</ul>
+<ul>
+<li><span class="footer-title">Join Us</span></li>
+</ul>
+<ul class="copyright">
+<li>2023 NOAA-EMC, NASA-GMAO</li>
+</ul>
+</div>
+</footer>
+<!-- Google Analytics -->
+<!-- MathJax Config -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
