@@ -3,6 +3,7 @@ bokeh>=2.4.3
 hvplot>=0.8.3
 jinja2>=3.0.3
 sphinx==4.5.0
+attrs==21.4.0
 jsonschema==4.17.3
 markdown-it-py<2.0.0
 mdit-py-plugins==0.2.8
