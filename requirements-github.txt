@@ -6,8 +6,8 @@ jinja2>=3.0.3
 sphinx==4.5.0
 markdown-it-py>=1.0.0
 mdit-py-plugins>=0.2.8
-myst-parser>=0.15.2
-myst-nb==0.18.0
+myst-parser==0.18.0
+myst-nb>=0.17.2
 nbsite==0.7.1
 sphinx_copybutton>=0.5.1
 sphinx_holoviz_theme>=0.1.4
