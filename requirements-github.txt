@@ -4,4 +4,3 @@ hvplot
 geopandas
 cycler
 kiwisolver
-cartopy
