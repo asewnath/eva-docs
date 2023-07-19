@@ -9,7 +9,7 @@ from nbsite.shared_conf import *
 
 project = u''
 authors = u'NOAA-EMC, NASA-GMAO'
-copyright = u'2023 ' + authors
+copyright = u''
 description = 'Short description for html meta description.'
 site = 'https://{}.pyviz.org'.format(project)
 version = release = '0.0.1'
@@ -35,14 +35,18 @@ html_logo = "_static/logo.png"
 
 # logo file etc should be in html_static_path, e.g. _static
 # only change colors in primary, primary_dark, and secondary
-#html_theme_options = {
+html_theme_options = {
 #    'custom_css': 'site.css',
 #    'logo': 'logo.png',
 #    'favicon': 'favicon.ico',
 #    'primary_color': 'MediumSeaGreen',
 #    'primary_color_dark': 'sienna',
 #    'secondary_color': 'DarkTurquoise',
-#}
+    "footer_items": [
+        "copyright",
+        "last-updated",
+    ]
+}
 
 myst_enable_extensions = ["colon_fence"]
 
