@@ -1,5 +1,7 @@
-sphinx==5.3.0
 nbsite
 bokeh
 hvplot
 geopandas
+cycler
+kiwisolver
+cartopy
