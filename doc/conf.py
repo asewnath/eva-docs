@@ -18,7 +18,7 @@ version = release = '0.0.1'
 html_static_path += ['_static']
 
 html_css_files = [
-    'nbsite.css',
+    #'nbsite.css',
     'custom.css'
     '_static/site.css'
 ]
@@ -48,9 +48,9 @@ html_theme_options = {
     ]
 }
 
-html_sidebars = {
-    "**": ["sidebar-nav-bs"]
-}
+#html_sidebars = {
+#    "**": ["sidebar-nav-bs"]
+#}
 
 myst_enable_extensions = ["colon_fence"]
 
@@ -63,19 +63,19 @@ myst_enable_extensions = ["colon_fence"]
 #    ('About', 'about')
 #)
 
-html_context.update({
-    'PROJECT': project,
-    'DESCRIPTION': description,
-    'AUTHOR': authors,
-    # will work without this - for canonical (so can ignore when building locally or test deploying)
-    'WEBSITE_SERVER': site,
-    'VERSION': version,
-    #'NAV': _NAV,
-    # by default, footer links are same as those in header
-    #'LINKS': _NAV,
-    #'SOCIAL': (
-    #    ('Gitter', 'https://gitter.im/pyviz/pyviz'),
-    #    ('Twitter', 'https://twitter.com/holoviz_org'),
-    #    ('Github', 'https://github.com/holoviz/{}'.format(project)),
-    #)
-})
+#html_context.update({
+#    'PROJECT': project,
+#    'DESCRIPTION': description,
+#    'AUTHOR': authors,
+#    # will work without this - for canonical (so can ignore when building locally or test deploying)
+#    'WEBSITE_SERVER': site,
+#    'VERSION': version,
+#    #'NAV': _NAV,
+#    # by default, footer links are same as those in header
+#    #'LINKS': _NAV,
+#    #'SOCIAL': (
+#    #    ('Gitter', 'https://gitter.im/pyviz/pyviz'),
+#    #    ('Twitter', 'https://twitter.com/holoviz_org'),
+#    #    ('Github', 'https://github.com/holoviz/{}'.format(project)),
+#    #)
+#})
