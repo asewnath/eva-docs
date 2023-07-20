@@ -14,6 +14,7 @@ kernelspec:
 alt: eva logo
 align: left
 width: 200
+class: dark-light
 ---
 ```
 <br>
