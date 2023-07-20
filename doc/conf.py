@@ -31,7 +31,8 @@ html_show_sourcelink = False
 #html_theme = 'sphinx_holoviz_theme'
 html_theme = "pydata_sphinx_theme"
 html_favicon = "_static/favicon.ico"
-html_logo = "_static/logo.png"
+#html_logo = "_static/logo.png"
+html_logo = "_static/images/eva_logo_ball.png"
 
 # logo file etc should be in html_static_path, e.g. _static
 # only change colors in primary, primary_dark, and secondary
