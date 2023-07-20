@@ -16,7 +16,6 @@ version = release = '0.0.1'
 #sys.path.insert(0, './eva/src')
 
 html_static_path += ['_static']
-templates_path = ['_templates']
 
 html_css_files = [
     'nbsite.css',
@@ -28,6 +27,7 @@ extensions += [
     'sphinx_copybutton'
 ]
 
+html_show_sourcelink = False
 #html_theme = 'sphinx_holoviz_theme'
 html_theme = "pydata_sphinx_theme"
 html_favicon = "_static/favicon.ico"
@@ -46,6 +46,10 @@ html_theme_options = {
         "copyright",
         "last-updated",
     ]
+}
+
+html_sidebars = {
+    "**": ["sidebar-nav-bs"]
 }
 
 myst_enable_extensions = ["colon_fence"]
