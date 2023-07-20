@@ -3,4 +3,5 @@ nbsite
 bokeh
 hvplot
 geopandas
-
+cycler
+kiwisolver
