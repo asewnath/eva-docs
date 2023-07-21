@@ -13,10 +13,10 @@ jobs:
     steps:
 
     # Setup Python
-    - name: Set up Python 3.9
+    - name: Set up Python 3.10
       uses: actions/setup-python@v2
       with:
-        python-version: 3.9
+        python-version: 3.10.12
 
     # Update conda
     - name: Update conda
@@ -44,9 +44,16 @@ jobs:
         path: './eva'
         lfs: true
 
-    # Install eva-docs
-    - name: Upgrade pip
-      run: $CONDA/bin/pip3 install --upgrade pip
+    # Upgrade pip
+    #- name: Upgrade pip
+    #  run: $CONDA/bin/pip3 install --upgrade pip
+
+    # Install eva
+    - name: Install eva and dependencies
+      run: $CONDA/bin/pip3 install --use-deprecated=legacy-resolver -r requirements-github.txt --user ./eva/
+    - name: Put eva in the path
+      run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+
     #- name: Install eva-docs and dependencies
     #  run: $CONDA/bin/pip3 install --use-deprecated=legacy-resolver -r requirements-github.txt --user .
     - name: Install Python dependencies for eva-docs
@@ -56,13 +63,6 @@ jobs:
     - name: Put eva-docs in the path
       #run: echo "$HOME/.local/bin"
       run: echo $GITHUB_PATH
-
-    # Clone eva repository
-    # Install eva
-    - name: Install eva and dependencies
-      run: $CONDA/bin/pip3 install --use-deprecated=legacy-resolver -r requirements-github.txt --user ./eva/
-    - name: Put eva in the path
-      run: echo "$HOME/.local/bin" >> $GITHUB_PATH
 
     # Install ipykernel
     - name: Install ipykernel

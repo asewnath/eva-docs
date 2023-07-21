@@ -9,17 +9,16 @@ from nbsite.shared_conf import *
 
 project = u''
 authors = u'NOAA-EMC, NASA-GMAO'
-copyright = u'2023 ' + authors
+copyright = u''
 description = 'Short description for html meta description.'
 site = 'https://{}.pyviz.org'.format(project)
 version = release = '0.0.1'
 #sys.path.insert(0, './eva/src')
 
 html_static_path += ['_static']
-templates_path = ['_templates']
 
 html_css_files = [
-    'nbsite.css',
+    #'nbsite.css',
     'custom.css'
     '_static/site.css'
 ]
@@ -28,20 +27,30 @@ extensions += [
     'sphinx_copybutton'
 ]
 
+html_show_sourcelink = False
 #html_theme = 'sphinx_holoviz_theme'
 html_theme = "pydata_sphinx_theme"
 html_favicon = "_static/favicon.ico"
-html_logo = "_static/logo.png"
+#html_logo = "_static/logo.png"
+html_logo = "_static/images/eva_logo_ball.png"
 
 # logo file etc should be in html_static_path, e.g. _static
 # only change colors in primary, primary_dark, and secondary
-#html_theme_options = {
+html_theme_options = {
 #    'custom_css': 'site.css',
 #    'logo': 'logo.png',
 #    'favicon': 'favicon.ico',
 #    'primary_color': 'MediumSeaGreen',
 #    'primary_color_dark': 'sienna',
 #    'secondary_color': 'DarkTurquoise',
+    "footer_items": [
+        "copyright",
+        "last-updated",
+    ]
+}
+
+#html_sidebars = {
+#    "**": ["sidebar-nav-bs"]
 #}
 
 myst_enable_extensions = ["colon_fence"]
@@ -55,19 +64,19 @@ myst_enable_extensions = ["colon_fence"]
 #    ('About', 'about')
 #)
 
-html_context.update({
-    'PROJECT': project,
-    'DESCRIPTION': description,
-    'AUTHOR': authors,
-    # will work without this - for canonical (so can ignore when building locally or test deploying)
-    'WEBSITE_SERVER': site,
-    'VERSION': version,
-    #'NAV': _NAV,
-    # by default, footer links are same as those in header
-    #'LINKS': _NAV,
-    #'SOCIAL': (
-    #    ('Gitter', 'https://gitter.im/pyviz/pyviz'),
-    #    ('Twitter', 'https://twitter.com/holoviz_org'),
-    #    ('Github', 'https://github.com/holoviz/{}'.format(project)),
-    #)
-})
+#html_context.update({
+#    'PROJECT': project,
+#    'DESCRIPTION': description,
+#    'AUTHOR': authors,
+#    # will work without this - for canonical (so can ignore when building locally or test deploying)
+#    'WEBSITE_SERVER': site,
+#    'VERSION': version,
+#    #'NAV': _NAV,
+#    # by default, footer links are same as those in header
+#    #'LINKS': _NAV,
+#    #'SOCIAL': (
+#    #    ('Gitter', 'https://gitter.im/pyviz/pyviz'),
+#    #    ('Twitter', 'https://twitter.com/holoviz_org'),
+#    #    ('Github', 'https://github.com/holoviz/{}'.format(project)),
+#    #)
+#})
