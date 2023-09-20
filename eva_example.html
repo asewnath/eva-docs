@@ -1,0 +1,713 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Docutils 0.19: https://docutils.sourceforge.io/" name="generator"/>
+<title>eva example —   documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!-- Loaded before other Sphinx assets -->
+<link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet"/>
+<link as="font" crossorigin="" href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" rel="preload" type="font/woff2"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" rel="stylesheet" type="text/css"/>
+<link href="_static/graphviz.css" rel="stylesheet" type="text/css"/>
+<link href="_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" rel="stylesheet" type="text/css"/>
+<link href="_static/nbsite.css" rel="stylesheet" type="text/css"/>
+<link href="_static/notebook.css" rel="stylesheet" type="text/css"/>
+<link href="_static/gallery.css" rel="stylesheet" type="text/css"/>
+<link href="_static/alert.css" rel="stylesheet" type="text/css"/>
+<link href="_static/dataframe.css" rel="stylesheet" type="text/css"/>
+<link href="_static/scroller.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" rel="preload"/>
+<link as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" rel="preload"/>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+<script src="_static/jquery.js"></script>
+<script src="_static/underscore.js"></script>
+<script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="_static/doctools.js"></script>
+<script src="_static/sphinx_highlight.js"></script>
+<script src="_static/clipboard.min.js"></script>
+<script src="_static/copybutton.js"></script>
+<script src="_static/design-tabs.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = 'eva_example';</script>
+<link href="_static/favicon.ico" rel="shortcut icon"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="API/index.html" rel="next" title="API Documentation"/>
+<link href="plot_tools/plot_tools_overview.html" rel="prev" title="Plot Tools Overview"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<input class="sidebar-toggle" id="__primary" name="__primary" type="checkbox"/>
+<label class="overlay overlay-primary" for="__primary"></label>
+<input class="sidebar-toggle" id="__secondary" name="__secondary" type="checkbox"/>
+<label class="overlay overlay-secondary" for="__secondary"></label>
+<div class="search-button__wrapper">
+<div class="search-button__overlay"></div>
+<div class="search-button__search-container">
+<form action="search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search the docs ..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" id="search-input" name="q" placeholder="Search the docs ..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+</div>
+<nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+<label class="sidebar-toggle primary-toggle" for="__primary">
+<span class="fa-solid fa-bars"></span>
+</label>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="index.html">
+<img alt="Logo image" class="logo__image only-light" src="_static/eva_logo_ball.png"/>
+<script>document.write(`<img src="_static/eva_logo_ball.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+</a></div>
+</div>
+<div class="col-lg-9 navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="index.html">
+                        Home
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="getting_started/index.html">
+                        Getting Started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="eva_infrastructure/index.html">
+                        Eva Infrastructure
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="diagnostics/index.html">
+                        Diagnostics
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="plot_tools/index.html">
+                        Plot Tools
+                      </a>
+</li>
+<div class="nav-item dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="btn dropdown-toggle nav-item" data-bs-toggle="dropdown" type="button">
+                    More
+                </button>
+<div class="dropdown-menu">
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="#">
+                        Eva Example
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="API/index.html">
+                        API
+                      </a>
+</li>
+</div>
+</div>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+</div>
+<label class="sidebar-toggle secondary-toggle" for="__secondary">
+<span class="fa-solid fa-outdent"></span>
+</label>
+</div>
+</nav>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<div class="bd-sidebar-primary bd-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item"><nav class="navbar-nav">
+<p aria-label="Site Navigation" aria-level="1" class="sidebar-header-items__title" role="heading">
+    Site Navigation
+  </p>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="index.html">
+                        Home
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="getting_started/index.html">
+                        Getting Started
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="eva_infrastructure/index.html">
+                        Eva Infrastructure
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="diagnostics/index.html">
+                        Diagnostics
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="plot_tools/index.html">
+                        Plot Tools
+                      </a>
+</li>
+<div class="nav-item dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="btn dropdown-toggle nav-item" data-bs-toggle="dropdown" type="button">
+                    More
+                </button>
+<div class="dropdown-menu">
+<li class="nav-item current active">
+<a class="nav-link nav-internal" href="#">
+                        Eva Example
+                      </a>
+</li>
+<li class="nav-item">
+<a class="nav-link nav-internal" href="API/index.html">
+                        API
+                      </a>
+</li>
+</div>
+</div>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+</div>
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item"><nav aria-label="Section Navigation" class="bd-docs-nav bd-links">
+<div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="getting_started/index.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/installing_eva.html">Installing Eva</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/using_eva.html">Using Eva</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="eva_infrastructure/index.html">Eva Infrastructure</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="eva_infrastructure/eva_api.html">Eva API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eva_infrastructure/eva_class_structure.html">EVA Class Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="diagnostics/index.html">Diagnostics</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="diagnostics/adding_diagnostics.html">Adding Diagnostics</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="plot_tools/index.html">Plot Tools</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="plot_tools/plot_tools_overview.html">Plot Tools Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Eva Example</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="API/index.html">API</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="API/eva.transforms.html">eva.transforms package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/eva.tests.html">eva.tests package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API/eva.utilities.html">eva.utilities package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="API/eva.plotting.html">eva.plotting package</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="API/eva.plotting.emcpy.html">eva.plotting.emcpy package</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="API/eva.plotting.emcpy.diagnostics.html">eva.plotting.emcpy.diagnostics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="API/eva.plotting.emcpy.plot_tools.html">eva.plotting.emcpy.plot_tools package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="API/eva.plotting.hvplot.html">eva.plotting.hvplot package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API/eva.data.html">eva.data package</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+<div id="rtd-footer-container"></div>
+</div>
+<main class="bd-main" id="main-content">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumbs">
+<ul aria-label="Breadcrumb" class="bd-breadcrumbs" role="navigation">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li aria-current="page" class="breadcrumb-item active">eva example</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article" role="main">
+<section id="eva-example">
+<h1>eva example<a class="headerlink" href="#eva-example" title="Permalink to this heading">#</a></h1>
+<section id="eva-interactive-example">
+<h2>EVA Interactive Example<a class="headerlink" href="#eva-interactive-example" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eva.data.eva_interactive</span> <span class="kn">import</span> <span class="n">EvaInteractive</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">eva.data.eva_interactive</span> <span class="kn">import</span> <span class="n">EvaInteractive</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named 'eva.data.eva_interactive'
+</pre></div>
+</div>
+</div>
+</div>
+<section id="load-data-collections-for-amsu-a-and-aircraft">
+<h3>Load data collections for AMSU-A and Aircraft<a class="headerlink" href="#load-data-collections-for-amsu-a-and-aircraft" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">amsua_file</span> <span class="o">=</span> <span class="s1">'data/ioda_obs_space.amsua_n19.hofx.2020-12-14T210000Z.nc4'</span>
+<span class="n">aircraft_file</span> <span class="o">=</span> <span class="s1">'data/ioda_obs_space.aircraft.hofx.2020-12-14T210000Z.nc4'</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eva_amsua</span> <span class="o">=</span> <span class="n">EvaInteractive</span><span class="p">()</span>
+<span class="n">eva_aircraft</span> <span class="o">=</span> <span class="n">EvaInteractive</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_amsua</span> <span class="o">=</span> <span class="n">eva_amsua</span><span class="o">.</span><span class="n">load_ioda</span><span class="p">(</span><span class="n">amsua_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO EvaInteractive:   Initializing eva IodaObsSpace object
+INFO DataCollections: --------------------------------------------------------------------------------
+INFO DataCollections: <span class="-Color -Color-Bold">Collections available: </span>
+INFO DataCollections: 
+INFO DataCollections: Collection name: interactive
+INFO DataCollections: 
+INFO DataCollections:  Dimensions:
+INFO DataCollections:   Channel: 15
+INFO DataCollections:   Location: 100
+INFO DataCollections: 
+INFO DataCollections:  Coordinates:
+INFO DataCollections:   Channel
+INFO DataCollections:   Location
+INFO DataCollections: 
+INFO DataCollections:  Data (group::variable):
+INFO DataCollections:   EffectiveError::brightnessTemperature              (float32) | Min=+2.3000e-01, Max=+6.5943e+00, RMS=+2.1473e+00
+INFO DataCollections:   EffectiveQC::brightnessTemperature                 (int32  ) | Min=         +0, Max=        +19
+INFO DataCollections:   GsiBc::brightnessTemperature                       (float32) | Min=-9.8679e+00, Max=+4.3491e+01, RMS=+3.3058e+00
+INFO DataCollections:   GsiEffectiveQC::brightnessTemperature              (int32  ) | Min=         +0, Max=         +1
+INFO DataCollections:   GsiFinalObsError::brightnessTemperature            (float32) | Min=+2.3000e-01, Max=+8.3878e+00, RMS=+2.2078e+00
+INFO DataCollections:   GsiHofX::brightnessTemperature                     (float32) | Min=+1.4130e+02, Max=+2.8025e+02, RMS=+2.3076e+02
+INFO DataCollections:   GsiHofXBc::brightnessTemperature                   (float32) | Min=+1.4369e+02, Max=+2.8025e+02, RMS=+2.3102e+02
+INFO DataCollections:   GsiHofXClr::brightnessTemperature                  (float32) | Min=+0.0000e+00, Max=+0.0000e+00, RMS=+0.0000e+00
+INFO DataCollections:   MetaData::sensorZenithAngle                        (float32) | Min=-4.4800e+01, Max=+4.4800e+01, RMS=+2.8209e+01
+INFO DataCollections:   MetaData::sensorCentralFrequency                   (float32) | Min=+2.3800e+01, Max=+8.9010e+01, RMS=+5.5628e+01
+INFO DataCollections:   MetaData::sensorScanPosition                       (float32) | Min=+4.0000e+00, Max=+2.7000e+01, RMS=+1.6427e+01
+INFO DataCollections:   MetaData::ObsError                                 (float32) | Min=+2.3000e-01, Max=+5.0000e+00, RMS=+1.7767e+00
+INFO DataCollections:   MetaData::mean_lapse_rate                          (float32) | Min=-8.1909e+00, Max=+4.7830e+00, RMS=+3.9322e+00
+INFO DataCollections:   MetaData::longitude                                (float32) | Min=+8.4916e+00, Max=+3.5774e+02, RMS=+2.0666e+02
+INFO DataCollections:   MetaData::gsi_use_flag                             (int32  ) | Min=         -1, Max=         +4
+INFO DataCollections:   MetaData::latitude                                 (float32) | Min=-8.6511e+01, Max=-5.4103e+01, RMS=+6.9190e+01
+INFO DataCollections:   MetaData::sensorViewAngle                          (float32) | Min=-3.8334e+01, Max=+3.8325e+01, RMS=+2.4368e+01
+INFO DataCollections:   MetaData::clw_retrieved_from_observation           (float32) | Min=-1.5052e-01, Max=+2.8662e-01, RMS=+7.1686e-02
+INFO DataCollections:   MetaData::clw_retrieved_from_background            (float32) | Min=+0.0000e+00, Max=+0.0000e+00, RMS=+0.0000e+00
+INFO DataCollections:   MetaData::solarZenithAngle                         (float32) | Min=+6.7860e+01, Max=+8.4950e+01, RMS=+7.6098e+01
+INFO DataCollections:   MetaData::sensorPolarizationDirection              (int32  ) | Min=         +9, Max=        +10
+INFO DataCollections:   MetaData::scat_retrieved_from_observation          (float32) | Min=+0.0000e+00, Max=+0.0000e+00, RMS=+0.0000e+00
+INFO DataCollections:   MetaData::sensorCentralWavenumber                  (float32) | Min=+7.9387e-01, Max=+2.9691e+00, RMS=+1.8555e+00
+INFO DataCollections:   MetaData::sensorChannelNumber                      (int32  ) | Min=         +1, Max=        +15
+INFO DataCollections:   MetaData::sensorAzimuthAngle                       (float32) | Min=+3.0200e+00, Max=+3.5661e+02, RMS=+2.0913e+02
+INFO DataCollections:   MetaData::dateTime                                 (int64  ) | Min=+1607983897, Max=+1607997115
+INFO DataCollections:   MetaData::solarAzimuthAngle                        (float32) | Min=+9.7600e+01, Max=+2.4965e+02, RMS=+1.7693e+02
+INFO DataCollections:   MetaData::height                                   (float32) | Min=+0.0000e+00, Max=+3.9396e+03, RMS=+1.5339e+03
+INFO DataCollections:   ObsBias::brightnessTemperature                     (float32) | Min=-1.0442e+01, Max=+4.4369e+01, RMS=+3.5998e+00
+INFO DataCollections:   ObsError::brightnessTemperature                    (float32) | Min=+2.3000e-01, Max=+5.0000e+00, RMS=+1.7767e+00
+INFO DataCollections:   ObsValue::brightnessTemperature                    (float32) | Min=+1.4472e+02, Max=+2.8050e+02, RMS=+2.3172e+02
+INFO DataCollections:   PreQC::brightnessTemperature                       (int32  ) | Min=        -51, Max=        +51
+INFO DataCollections:   cloud_liquid_waterPredictor::brightnessTemperature (float32) | Min=-1.2171e-01, Max=+2.8752e-01, RMS=+5.3735e-02
+INFO DataCollections:   constantPredictor::brightnessTemperature           (float32) | Min=+0.0000e+00, Max=+1.0000e+00, RMS=+9.6609e-01
+INFO DataCollections:   emissivityPredictor::brightnessTemperature         (float32) | Min=+0.0000e+00, Max=+2.6238e+02, RMS=+9.9499e+01
+INFO DataCollections:   hofx::brightnessTemperature                        (float32) | Min=+1.4351e+02, Max=+2.8025e+02, RMS=+2.3099e+02
+INFO DataCollections:   lapse_ratePredictor::brightnessTemperature         (float32) | Min=-7.1894e+00, Max=+4.0331e+00, RMS=+2.2956e+00
+INFO DataCollections:   lapse_rate_order_2Predictor::brightnessTemperature (float32) | Min=+0.0000e+00, Max=+5.1687e+01, RMS=+1.0174e+01
+INFO DataCollections:   scan_anglePredictor::brightnessTemperature         (float32) | Min=-6.6905e-01, Max=+6.6890e-01, RMS=+4.1088e-01
+INFO DataCollections:   scan_angle_order_2Predictor::brightnessTemperature (float32) | Min=+0.0000e+00, Max=+4.4763e-01, RMS=+2.3045e-01
+INFO DataCollections:   scan_angle_order_3Predictor::brightnessTemperature (float32) | Min=-2.9949e-01, Max=+2.9928e-01, RMS=+1.3946e-01
+INFO DataCollections:   scan_angle_order_4Predictor::brightnessTemperature (float32) | Min=+0.0000e+00, Max=+2.0038e-01, RMS=+8.7428e-02
+INFO DataCollections: --------------------------------------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc_aircraft</span> <span class="o">=</span> <span class="n">eva_aircraft</span><span class="o">.</span><span class="n">load_ioda</span><span class="p">(</span><span class="n">aircraft_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO EvaInteractive:   Initializing eva IodaObsSpace object
+INFO DataCollections: --------------------------------------------------------------------------------
+INFO DataCollections: <span class="-Color -Color-Bold">Collections available: </span>
+INFO DataCollections: 
+INFO DataCollections: Collection name: interactive
+INFO DataCollections: 
+INFO DataCollections:  Dimensions:
+INFO DataCollections:   Location: 99
+INFO DataCollections: 
+INFO DataCollections:  Coordinates:
+INFO DataCollections:   Location
+INFO DataCollections: 
+INFO DataCollections:  Data (group::variable):
+INFO DataCollections:   EffectiveError::airTemperature    (float32) | Min=+1.0000e+00, Max=+1.4706e+00, RMS=+1.0771e+00
+INFO DataCollections:   EffectiveError::windEastward      (float32) | Min=+2.5000e+00, Max=+2.5000e+00, RMS=+2.5000e+00
+INFO DataCollections:   EffectiveError::windNorthward     (float32) | Min=+2.5000e+00, Max=+2.5000e+00, RMS=+2.5000e+00
+INFO DataCollections:   EffectiveQC::airTemperature       (int32  ) | Min=         +0, Max=         +0
+INFO DataCollections:   EffectiveQC::windEastward         (int32  ) | Min=         +0, Max=         +0
+INFO DataCollections:   EffectiveQC::windNorthward        (int32  ) | Min=         +0, Max=         +0
+INFO DataCollections:   GsiAdjustObsError::airTemperature (float32) | Min=+1.0000e+00, Max=+2.7137e+00, RMS=+1.2265e+00
+INFO DataCollections:   GsiAdjustObsError::windEastward   (float32) | Min=+2.5000e+00, Max=+5.1534e+00, RMS=+2.7953e+00
+INFO DataCollections:   GsiAdjustObsError::windNorthward  (float32) | Min=+2.5000e+00, Max=+5.1534e+00, RMS=+2.7953e+00
+INFO DataCollections:   GsiEffectiveQC::airTemperature    (int32  ) | Min=         +0, Max=         +1
+INFO DataCollections:   GsiEffectiveQC::windEastward      (int32  ) | Min=         +0, Max=         +1
+INFO DataCollections:   GsiEffectiveQC::windNorthward     (int32  ) | Min=         +0, Max=         +1
+INFO DataCollections:   GsiFinalObsError::airTemperature  (float32) | Min=+1.0000e+00, Max=+1.4548e+01, RMS=+1.9612e+00
+INFO DataCollections:   GsiFinalObsError::windEastward    (float32) | Min=+2.5000e+00, Max=+9.0386e+00, RMS=+2.9692e+00
+INFO DataCollections:   GsiFinalObsError::windNorthward   (float32) | Min=+2.5000e+00, Max=+9.0386e+00, RMS=+2.9692e+00
+INFO DataCollections:   GsiHofX::airTemperature           (float32) | Min=+2.1099e+02, Max=+2.9181e+02, RMS=+2.5772e+02
+INFO DataCollections:   GsiHofX::windEastward             (float32) | Min=-3.9112e+00, Max=+5.3673e+01, RMS=+2.3508e+01
+INFO DataCollections:   GsiHofX::windNorthward            (float32) | Min=-4.5300e+01, Max=+2.8187e+01, RMS=+1.3531e+01
+INFO DataCollections:   GsiHofXBc::airTemperature         (float32) | Min=+2.1134e+02, Max=+2.9142e+02, RMS=+2.5761e+02
+INFO DataCollections:   GsiHofXBc::windEastward           (float32) | Min=-3.9112e+00, Max=+5.3673e+01, RMS=+2.3508e+01
+INFO DataCollections:   GsiHofXBc::windNorthward          (float32) | Min=-4.5300e+01, Max=+2.8187e+01, RMS=+1.3531e+01
+INFO DataCollections:   GsiInputObsError::windEastward    (float32) | Min=+2.5000e+00, Max=+2.5000e+00, RMS=+2.5000e+00
+INFO DataCollections:   GsiInputObsError::windNorthward   (float32) | Min=+2.5000e+00, Max=+2.5000e+00, RMS=+2.5000e+00
+INFO DataCollections:   GsiQCWeight::airTemperature       (float32) | Min=+4.0000e+00, Max=+4.0000e+00, RMS=+4.0000e+00
+INFO DataCollections:   GsiQCWeight::windEastward         (float32) | Min=+4.0000e+00, Max=+4.0000e+00, RMS=+4.0000e+00
+INFO DataCollections:   GsiQCWeight::windNorthward        (float32) | Min=+4.0000e+00, Max=+4.0000e+00, RMS=+4.0000e+00
+INFO DataCollections:   GsiUseFlag::airTemperature        (int32  ) | Min=         -1, Max=         +1
+INFO DataCollections:   GsiUseFlag::windEastward          (int32  ) | Min=         -1, Max=         +1
+INFO DataCollections:   GsiUseFlag::windNorthward         (int32  ) | Min=         -1, Max=         +1
+INFO DataCollections:   MetaData::dateTime                (int64  ) | Min=+1607979779, Max=+1608000419
+INFO DataCollections:   MetaData::latitude                (float32) | Min=+1.9650e+01, Max=+4.4647e+01, RMS=+3.5280e+01
+INFO DataCollections:   MetaData::longitude               (float32) | Min=+2.3754e+02, Max=+2.8530e+02, RMS=+2.6559e+02
+INFO DataCollections:   MetaData::pressure                (float32) | Min=+1.7870e+04, Max=+1.0173e+05, RMS=+6.4129e+04
+INFO DataCollections:   MetaData::stationElevation        (float32) | Min=-7.8000e+01, Max=+1.2497e+04, RMS=+7.1935e+03
+INFO DataCollections:   MetaData::height                  (float32) | Min=-3.4000e+01, Max=+1.2497e+04, RMS=+6.5524e+03
+INFO DataCollections:   MetaData::stationIdentification   (object ) | Min=-3.4000e+01, Max=+1.2497e+04, RMS=+6.5524e+03
+INFO DataCollections:   ObsBias::airTemperature           (float32) | Min=+0.0000e+00, Max=+0.0000e+00, RMS=+0.0000e+00
+INFO DataCollections:   ObsBias::windEastward             (float32) | Min=+0.0000e+00, Max=+0.0000e+00, RMS=+0.0000e+00
+INFO DataCollections:   ObsBias::windNorthward            (float32) | Min=+0.0000e+00, Max=+0.0000e+00, RMS=+0.0000e+00
+INFO DataCollections:   ObsError::airTemperature          (float32) | Min=+1.0000e+00, Max=+1.4706e+00, RMS=+1.0771e+00
+INFO DataCollections:   ObsError::windEastward            (float32) | Min=+2.5000e+00, Max=+2.5000e+00, RMS=+2.5000e+00
+INFO DataCollections:   ObsError::windNorthward           (float32) | Min=+2.5000e+00, Max=+2.5000e+00, RMS=+2.5000e+00
+INFO DataCollections:   ObsType::airTemperature           (int32  ) | Min=       +133, Max=       +133
+INFO DataCollections:   ObsType::windEastward             (int32  ) | Min=       +233, Max=       +233
+INFO DataCollections:   ObsType::windNorthward            (int32  ) | Min=       +233, Max=       +233
+INFO DataCollections:   ObsValue::airTemperature          (float32) | Min=+2.0815e+02, Max=+2.9125e+02, RMS=+2.5780e+02
+INFO DataCollections:   ObsValue::windEastward            (float32) | Min=-6.1000e+00, Max=+5.5300e+01, RMS=+2.3130e+01
+INFO DataCollections:   ObsValue::windNorthward           (float32) | Min=-4.7000e+01, Max=+3.0400e+01, RMS=+1.4299e+01
+INFO DataCollections:   PreQC::airTemperature             (int32  ) | Min=         +1, Max=        +13
+INFO DataCollections:   PreQC::windEastward               (int32  ) | Min=         +1, Max=        +13
+INFO DataCollections:   PreQC::windNorthward              (int32  ) | Min=         +1, Max=        +13
+INFO DataCollections:   PreUseFlag::airTemperature        (int32  ) | Min=         +0, Max=       +101
+INFO DataCollections:   PreUseFlag::windEastward          (int32  ) | Min=         +0, Max=       +101
+INFO DataCollections:   PreUseFlag::windNorthward         (int32  ) | Min=         +0, Max=       +101
+INFO DataCollections:   hofx::airTemperature              (float32) | Min=+2.1094e+02, Max=+2.9195e+02, RMS=+2.5773e+02
+INFO DataCollections:   hofx::windEastward                (float32) | Min=-3.8279e+00, Max=+5.3992e+01, RMS=+2.3526e+01
+INFO DataCollections:   hofx::windNorthward               (float32) | Min=-4.6586e+01, Max=+2.8748e+01, RMS=+1.3622e+01
+INFO DataCollections: --------------------------------------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="arithmetic-demonstration-with-amsu-a">
+<h3>Arithmetic demonstration with AMSU-A<a class="headerlink" href="#arithmetic-demonstration-with-amsu-a" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eva_amsua</span><span class="o">.</span><span class="n">arithmetic</span><span class="p">(</span><span class="n">new_name</span><span class="o">=</span><span class="s1">'ObsValueMinusGsiHofXBc'</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="s1">'ObsValue-GsiHofXBc'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO EvaInteractive: Added 'ObsValueMinusGsiHofXBc' to data collection.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eva_amsua</span><span class="o">.</span><span class="n">arithmetic</span><span class="p">(</span><span class="n">new_name</span><span class="o">=</span><span class="s1">'ObsValueMinusHofX'</span><span class="p">,</span> <span class="n">expression</span><span class="o">=</span><span class="s1">'ObsValue-hofx'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO EvaInteractive: Added 'ObsValueMinusHofX' to data collection.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eva_amsua</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s1">'ObsValueMinusGsiHofXBc::brightnessTemperature'</span><span class="p">,</span> 
+                  <span class="s1">'ObsValueMinusHofX::brightnessTemperature'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="1002">
+<div class="bk-root" data-root-id="1002" id="cddc02e0-92e2-4ad8-b8a5-29620de8032d"></div>
+</div>
+<script type="application/javascript">(function(root) {
+  function embed_document(root) {
+    var docs_json = {"e73dfc7c-5481-42bb-b9a2-d6f73229c16d":{"defs":[{"extends":null,"module":null,"name":"ReactiveHTML1","overrides":[],"properties":[]},{"extends":null,"module":null,"name":"FlexBox1","overrides":[],"properties":[{"default":"flex-start","kind":null,"name":"align_content"},{"default":"flex-start","kind":null,"name":"align_items"},{"default":"row","kind":null,"name":"flex_direction"},{"default":"wrap","kind":null,"name":"flex_wrap"},{"default":"flex-start","kind":null,"name":"justify_content"}]},{"extends":null,"module":null,"name":"GridStack1","overrides":[],"properties":[{"default":"warn","kind":null,"name":"mode"},{"default":null,"kind":null,"name":"ncols"},{"default":null,"kind":null,"name":"nrows"},{"default":true,"kind":null,"name":"allow_resize"},{"default":true,"kind":null,"name":"allow_drag"},{"default":[],"kind":null,"name":"state"}]},{"extends":null,"module":null,"name":"click1","overrides":[],"properties":[{"default":"","kind":null,"name":"terminal_output"},{"default":"","kind":null,"name":"debug_name"},{"default":0,"kind":null,"name":"clears"}]},{"extends":null,"module":null,"name":"NotificationAreaBase1","overrides":[],"properties":[{"default":"bottom-right","kind":null,"name":"position"},{"default":0,"kind":null,"name":"_clear"}]},{"extends":null,"module":null,"name":"NotificationArea1","overrides":[],"properties":[{"default":[],"kind":null,"name":"notifications"},{"default":"bottom-right","kind":null,"name":"position"},{"default":0,"kind":null,"name":"_clear"},{"default":[{"background":"#ffc107","icon":{"className":"fas fa-exclamation-triangle","color":"white","tagName":"i"},"type":"warning"},{"background":"#007bff","icon":{"className":"fas fa-info-circle","color":"white","tagName":"i"},"type":"info"}],"kind":null,"name":"types"}]},{"extends":null,"module":null,"name":"Notification","overrides":[],"properties":[{"default":null,"kind":null,"name":"background"},{"default":3000,"kind":null,"name":"duration"},{"default":null,"kind":null,"name":"icon"},{"default":"","kind":null,"name":"message"},{"default":null,"kind":null,"name":"notification_type"},{"default":false,"kind":null,"name":"_destroyed"}]},{"extends":null,"module":null,"name":"TemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]},{"extends":null,"module":null,"name":"MaterialTemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]}],"roots":{"references":[{"attributes":{"children":[{"id":"1003"},{"id":"1007"},{"id":"1062"}],"margin":[0,0,0,0],"name":"Row00861","tags":["embedded"]},"id":"1002","type":"Row"},{"attributes":{"angle":{"value":0.0},"fill_alpha":{"value":1.0},"fill_color":{"value":"#0000ff"},"hatch_alpha":{"value":1.0},"hatch_color":{"value":"#0000ff"},"hatch_scale":{"value":12.0},"hatch_weight":{"value":1.0},"line_alpha":{"value":1.0},"line_cap":{"value":"butt"},"line_color":{"value":"#0000ff"},"line_dash":{"value":[]},"line_dash_offset":{"value":0},"line_join":{"value":"bevel"},"line_width":{"value":1},"marker":{"value":"circle"},"size":{"value":4.47213595499958},"x":{"field":"ObsValueMinusGsiHofXBc::brightnessTemperature"},"y":{"field":"ObsValueMinusHofX::brightnessTemperature"}},"id":"1045","type":"Scatter"},{"attributes":{},"id":"1047","type":"BasicTickFormatter"},{"attributes":{},"id":"1024","type":"SaveTool"},{"attributes":{},"id":"1021","type":"BasicTicker"},{"attributes":{},"id":"1048","type":"AllLabels"},{"attributes":{"callback":null,"renderers":[{"id":"1043"}],"tags":["hv_created"],"tooltips":[["ObsValueMinusGsiHofXBc::brightnessTemperature","@{ObsValueMinusGsiHofXBc_colon_colon_brightnessTemperature}"],["ObsValueMinusHofX::brightnessTemperature","@{ObsValueMinusHofX_colon_colon_brightnessTemperature}"]]},"id":"1006","type":"HoverTool"},{"attributes":{"axis_label":"ObsValueMinusHofX::brightnessTemperature","coordinates":null,"formatter":{"id":"1050"},"group":null,"major_label_policy":{"id":"1051"},"ticker":{"id":"1021"}},"id":"1020","type":"LinearAxis"},{"attributes":{"tools":[{"id":"1006"},{"id":"1024"},{"id":"1025"},{"id":"1026"},{"id":"1027"},{"id":"1028"}]},"id":"1030","type":"Toolbar"},{"attributes":{"source":{"id":"1037"}},"id":"1044","type":"CDSView"},{"attributes":{"data":{"ObsValueMinusGsiHofXBc::brightnessTemperature":{"__ndarray__":"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","dtype":"float32","order":"little","shape":[1500]},"ObsValueMinusGsiHofXBc_colon_colon_brightnessTemperature":{"__ndarray__":"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","dtype":"float32","order":"little","shape":[1500]},"ObsValueMinusHofX::brightnessTemperature":{"__ndarray__":"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","dtype":"float32","order":"little","shape":[1500]},"ObsValueMinusHofX_colon_colon_brightnessTemperature":{"__ndarray__":"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","dtype":"float32","order":"little","shape":[1500]}},"selected":{"id":"1038"},"selection_policy":{"id":"1059"}},"id":"1037","type":"ColumnDataSource"},{"attributes":{"axis":{"id":"1016"},"coordinates":null,"grid_line_color":null,"group":null,"ticker":null},"id":"1019","type":"Grid"},{"attributes":{"fill_color":{"value":"#0000ff"},"hatch_color":{"value":"#0000ff"},"line_color":{"value":"#0000ff"},"size":{"value":4.47213595499958},"x":{"field":"ObsValueMinusGsiHofXBc::brightnessTemperature"},"y":{"field":"ObsValueMinusHofX::brightnessTemperature"}},"id":"1040","type":"Scatter"},{"attributes":{},"id":"1012","type":"LinearScale"},{"attributes":{"axis":{"id":"1020"},"coordinates":null,"dimension":1,"grid_line_color":null,"group":null,"ticker":null},"id":"1023","type":"Grid"},{"attributes":{},"id":"1059","type":"UnionRenderers"},{"attributes":{},"id":"1038","type":"Selection"},{"attributes":{"axis_label":"ObsValueMinusGsiHofXBc::brightnessTemperature","coordinates":null,"formatter":{"id":"1047"},"group":null,"major_label_policy":{"id":"1048"},"ticker":{"id":"1017"}},"id":"1016","type":"LinearAxis"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#0000ff"},"hatch_alpha":{"value":0.1},"hatch_color":{"value":"#0000ff"},"line_alpha":{"value":0.1},"line_color":{"value":"#0000ff"},"size":{"value":4.47213595499958},"x":{"field":"ObsValueMinusGsiHofXBc::brightnessTemperature"},"y":{"field":"ObsValueMinusHofX::brightnessTemperature"}},"id":"1041","type":"Scatter"},{"attributes":{},"id":"1014","type":"LinearScale"},{"attributes":{"end":33.1968490600586,"reset_end":33.1968490600586,"reset_start":-32.587580871582034,"start":-32.587580871582034,"tags":[[["ObsValueMinusHofX::brightnessTemperature","ObsValueMinusHofX::brightnessTemperature",null]]]},"id":"1005","type":"Range1d"},{"attributes":{},"id":"1051","type":"AllLabels"},{"attributes":{"coordinates":null,"group":null,"text_color":"black","text_font_size":"12pt"},"id":"1008","type":"Title"},{"attributes":{},"id":"1026","type":"WheelZoomTool"},{"attributes":{"bottom_units":"screen","coordinates":null,"fill_alpha":0.5,"fill_color":"lightgrey","group":null,"left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","syncable":false,"top_units":"screen"},"id":"1029","type":"BoxAnnotation"},{"attributes":{"coordinates":null,"data_source":{"id":"1037"},"glyph":{"id":"1040"},"group":null,"hover_glyph":null,"muted_glyph":{"id":"1042"},"nonselection_glyph":{"id":"1041"},"selection_glyph":{"id":"1045"},"view":{"id":"1044"}},"id":"1043","type":"GlyphRenderer"},{"attributes":{},"id":"1017","type":"BasicTicker"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#0000ff"},"hatch_alpha":{"value":0.2},"hatch_color":{"value":"#0000ff"},"line_alpha":{"value":0.2},"line_color":{"value":"#0000ff"},"size":{"value":4.47213595499958},"x":{"field":"ObsValueMinusGsiHofXBc::brightnessTemperature"},"y":{"field":"ObsValueMinusHofX::brightnessTemperature"}},"id":"1042","type":"Scatter"},{"attributes":{"overlay":{"id":"1029"}},"id":"1027","type":"BoxZoomTool"},{"attributes":{"end":23.199954223632812,"reset_end":23.199954223632812,"reset_start":-31.516390991210937,"start":-31.516390991210937,"tags":[[["ObsValueMinusGsiHofXBc::brightnessTemperature","ObsValueMinusGsiHofXBc::brightnessTemperature",null]]]},"id":"1004","type":"Range1d"},{"attributes":{},"id":"1025","type":"PanTool"},{"attributes":{},"id":"1050","type":"BasicTickFormatter"},{"attributes":{},"id":"1028","type":"ResetTool"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer00865","sizing_mode":"stretch_width"},"id":"1003","type":"Spacer"},{"attributes":{"below":[{"id":"1016"}],"center":[{"id":"1019"},{"id":"1023"}],"height":400,"left":[{"id":"1020"}],"margin":[5,5,5,5],"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"renderers":[{"id":"1043"}],"sizing_mode":"fixed","title":{"id":"1008"},"toolbar":{"id":"1030"},"width":400,"x_range":{"id":"1004"},"x_scale":{"id":"1012"},"y_range":{"id":"1005"},"y_scale":{"id":"1014"}},"id":"1007","subtype":"Figure","type":"Plot"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer00866","sizing_mode":"stretch_width"},"id":"1062","type":"Spacer"}],"root_ids":["1002"]},"title":"Bokeh Application","version":"2.4.3"}};
+    var render_items = [{"docid":"e73dfc7c-5481-42bb-b9a2-d6f73229c16d","root_ids":["1002"],"roots":{"1002":"cddc02e0-92e2-4ad8-b8a5-29620de8032d"}}];
+    root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+    for (const render_item of render_items) {
+      for (const root_id of render_item.root_ids) {
+	const id_el = document.getElementById(root_id)
+	if (id_el.children.length && (id_el.children[0].className === 'bk-root')) {
+	  const root_el = id_el.children[0]
+	  root_el.id = root_el.id + '-rendered'
+	}
+      }
+    }
+  }
+  if (root.Bokeh !== undefined && root.Bokeh.Panel !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined && root.Bokeh.Panel !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else if (document.readyState == "complete") {
+        attempts++;
+        if (attempts > 200) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 25, root)
+  }
+})(window);</script></div></div>
+</div>
+</section>
+<section id="accept-where-demonstration-with-aircraft">
+<h3>Accept where demonstration with Aircraft<a class="headerlink" href="#accept-where-demonstration-with-aircraft" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eva_aircraft</span><span class="o">.</span><span class="n">accept_where</span><span class="p">(</span><span class="n">new_name</span><span class="o">=</span><span class="s1">'EffectiveErrorPassedQc'</span><span class="p">,</span> 
+                          <span class="n">starting_field</span><span class="o">=</span><span class="s1">'EffectiveError'</span><span class="p">,</span>
+                          <span class="n">where</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'EffectiveQC == 0'</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO EvaInteractive: Added 'EffectiveErrorPassedQc' to data collection.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eva_aircraft</span><span class="o">.</span><span class="n">accept_where</span><span class="p">(</span><span class="n">new_name</span><span class="o">=</span><span class="s1">'GsiFinalObsErrorPassedQc'</span><span class="p">,</span>
+                          <span class="n">starting_field</span> <span class="o">=</span> <span class="s1">'GsiFinalObsError'</span><span class="p">,</span>
+                          <span class="n">where</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'GsiEffectiveQC == 0'</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO EvaInteractive: Added 'GsiFinalObsErrorPassedQc' to data collection.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eva_aircraft</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s1">'GsiFinalObsErrorPassedQc::airTemperature'</span><span class="p">,</span> 
+                     <span class="s1">'EffectiveErrorPassedQc::airTemperature'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="1114">
+<div class="bk-root" data-root-id="1114" id="5b1bf1ef-9118-43ea-a39a-a6baf14a51b7"></div>
+</div>
+<script type="application/javascript">(function(root) {
+  function embed_document(root) {
+    var docs_json = {"d59a6275-bd11-4dea-977b-15b20d01c730":{"defs":[{"extends":null,"module":null,"name":"ReactiveHTML1","overrides":[],"properties":[]},{"extends":null,"module":null,"name":"FlexBox1","overrides":[],"properties":[{"default":"flex-start","kind":null,"name":"align_content"},{"default":"flex-start","kind":null,"name":"align_items"},{"default":"row","kind":null,"name":"flex_direction"},{"default":"wrap","kind":null,"name":"flex_wrap"},{"default":"flex-start","kind":null,"name":"justify_content"}]},{"extends":null,"module":null,"name":"GridStack1","overrides":[],"properties":[{"default":"warn","kind":null,"name":"mode"},{"default":null,"kind":null,"name":"ncols"},{"default":null,"kind":null,"name":"nrows"},{"default":true,"kind":null,"name":"allow_resize"},{"default":true,"kind":null,"name":"allow_drag"},{"default":[],"kind":null,"name":"state"}]},{"extends":null,"module":null,"name":"click1","overrides":[],"properties":[{"default":"","kind":null,"name":"terminal_output"},{"default":"","kind":null,"name":"debug_name"},{"default":0,"kind":null,"name":"clears"}]},{"extends":null,"module":null,"name":"NotificationAreaBase1","overrides":[],"properties":[{"default":"bottom-right","kind":null,"name":"position"},{"default":0,"kind":null,"name":"_clear"}]},{"extends":null,"module":null,"name":"NotificationArea1","overrides":[],"properties":[{"default":[],"kind":null,"name":"notifications"},{"default":"bottom-right","kind":null,"name":"position"},{"default":0,"kind":null,"name":"_clear"},{"default":[{"background":"#ffc107","icon":{"className":"fas fa-exclamation-triangle","color":"white","tagName":"i"},"type":"warning"},{"background":"#007bff","icon":{"className":"fas fa-info-circle","color":"white","tagName":"i"},"type":"info"}],"kind":null,"name":"types"}]},{"extends":null,"module":null,"name":"Notification","overrides":[],"properties":[{"default":null,"kind":null,"name":"background"},{"default":3000,"kind":null,"name":"duration"},{"default":null,"kind":null,"name":"icon"},{"default":"","kind":null,"name":"message"},{"default":null,"kind":null,"name":"notification_type"},{"default":false,"kind":null,"name":"_destroyed"}]},{"extends":null,"module":null,"name":"TemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]},{"extends":null,"module":null,"name":"MaterialTemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]}],"roots":{"references":[{"attributes":{},"id":"1133","type":"BasicTicker"},{"attributes":{},"id":"1138","type":"WheelZoomTool"},{"attributes":{},"id":"1136","type":"SaveTool"},{"attributes":{"overlay":{"id":"1141"}},"id":"1139","type":"BoxZoomTool"},{"attributes":{},"id":"1140","type":"ResetTool"},{"attributes":{},"id":"1162","type":"BasicTickFormatter"},{"attributes":{"end":1.5176600098609925,"reset_end":1.5176600098609925,"reset_start":0.9529399991035461,"start":0.9529399991035461,"tags":[[["EffectiveErrorPassedQc::airTemperature","EffectiveErrorPassedQc::airTemperature",null]]]},"id":"1117","type":"Range1d"},{"attributes":{"children":[{"id":"1115"},{"id":"1119"},{"id":"1174"}],"margin":[0,0,0,0],"name":"Row00968","tags":["embedded"]},"id":"1114","type":"Row"},{"attributes":{},"id":"1126","type":"LinearScale"},{"attributes":{"bottom_units":"screen","coordinates":null,"fill_alpha":0.5,"fill_color":"lightgrey","group":null,"left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","syncable":false,"top_units":"screen"},"id":"1141","type":"BoxAnnotation"},{"attributes":{},"id":"1150","type":"Selection"},{"attributes":{},"id":"1124","type":"LinearScale"},{"attributes":{},"id":"1163","type":"AllLabels"},{"attributes":{"tools":[{"id":"1118"},{"id":"1136"},{"id":"1137"},{"id":"1138"},{"id":"1139"},{"id":"1140"}]},"id":"1142","type":"Toolbar"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer00972","sizing_mode":"stretch_width"},"id":"1115","type":"Spacer"},{"attributes":{"angle":{"value":0.0},"fill_alpha":{"value":1.0},"fill_color":{"value":"#0000ff"},"hatch_alpha":{"value":1.0},"hatch_color":{"value":"#0000ff"},"hatch_scale":{"value":12.0},"hatch_weight":{"value":1.0},"line_alpha":{"value":1.0},"line_cap":{"value":"butt"},"line_color":{"value":"#0000ff"},"line_dash":{"value":[]},"line_dash_offset":{"value":0},"line_join":{"value":"bevel"},"line_width":{"value":1},"marker":{"value":"circle"},"size":{"value":4.47213595499958},"x":{"field":"GsiFinalObsErrorPassedQc::airTemperature"},"y":{"field":"EffectiveErrorPassedQc::airTemperature"}},"id":"1157","type":"Scatter"},{"attributes":{"end":4.106150460243225,"reset_end":4.106150460243225,"reset_start":0.7176226854324341,"start":0.7176226854324341,"tags":[[["GsiFinalObsErrorPassedQc::airTemperature","GsiFinalObsErrorPassedQc::airTemperature",null]]]},"id":"1116","type":"Range1d"},{"attributes":{"fill_color":{"value":"#0000ff"},"hatch_color":{"value":"#0000ff"},"line_color":{"value":"#0000ff"},"size":{"value":4.47213595499958},"x":{"field":"GsiFinalObsErrorPassedQc::airTemperature"},"y":{"field":"EffectiveErrorPassedQc::airTemperature"}},"id":"1152","type":"Scatter"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#0000ff"},"hatch_alpha":{"value":0.1},"hatch_color":{"value":"#0000ff"},"line_alpha":{"value":0.1},"line_color":{"value":"#0000ff"},"size":{"value":4.47213595499958},"x":{"field":"GsiFinalObsErrorPassedQc::airTemperature"},"y":{"field":"EffectiveErrorPassedQc::airTemperature"}},"id":"1153","type":"Scatter"},{"attributes":{"coordinates":null,"data_source":{"id":"1149"},"glyph":{"id":"1152"},"group":null,"hover_glyph":null,"muted_glyph":{"id":"1154"},"nonselection_glyph":{"id":"1153"},"selection_glyph":{"id":"1157"},"view":{"id":"1156"}},"id":"1155","type":"GlyphRenderer"},{"attributes":{"source":{"id":"1149"}},"id":"1156","type":"CDSView"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"value":"#0000ff"},"hatch_alpha":{"value":0.2},"hatch_color":{"value":"#0000ff"},"line_alpha":{"value":0.2},"line_color":{"value":"#0000ff"},"size":{"value":4.47213595499958},"x":{"field":"GsiFinalObsErrorPassedQc::airTemperature"},"y":{"field":"EffectiveErrorPassedQc::airTemperature"}},"id":"1154","type":"Scatter"},{"attributes":{"below":[{"id":"1128"}],"center":[{"id":"1131"},{"id":"1135"}],"height":400,"left":[{"id":"1132"}],"margin":[5,5,5,5],"min_border_bottom":10,"min_border_left":10,"min_border_right":10,"min_border_top":10,"renderers":[{"id":"1155"}],"sizing_mode":"fixed","title":{"id":"1120"},"toolbar":{"id":"1142"},"width":400,"x_range":{"id":"1116"},"x_scale":{"id":"1124"},"y_range":{"id":"1117"},"y_scale":{"id":"1126"}},"id":"1119","subtype":"Figure","type":"Plot"},{"attributes":{"callback":null,"renderers":[{"id":"1155"}],"tags":["hv_created"],"tooltips":[["GsiFinalObsErrorPassedQc::airTemperature","@{GsiFinalObsErrorPassedQc_colon_colon_airTemperature}"],["EffectiveErrorPassedQc::airTemperature","@{EffectiveErrorPassedQc_colon_colon_airTemperature}"]]},"id":"1118","type":"HoverTool"},{"attributes":{"coordinates":null,"group":null,"text_color":"black","text_font_size":"12pt"},"id":"1120","type":"Title"},{"attributes":{"data":{"EffectiveErrorPassedQc::airTemperature":{"__ndarray__":"AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/RtKhP6fDtD9nHJo/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAP2VBhz8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD84H7s/AACAP9YpuT8b9p4/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/T+mXPwAAgD+UuZg/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD97V4M/PIGoP588vD/uZ4c/AACAPwAAgD8AAIA/mqqwPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD/cvaQ/9uOzP4QNjz8XKKY/AACAP0n3mD81P6Y/2hCNPwAAgD8AAIA/AACAPwAAgD9FJYo/AACAPwAAgD8hLqc/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPw==","dtype":"float32","order":"little","shape":[94]},"EffectiveErrorPassedQc_colon_colon_airTemperature":{"__ndarray__":"AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/RtKhP6fDtD9nHJo/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAP2VBhz8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD84H7s/AACAP9YpuT8b9p4/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/T+mXPwAAgD+UuZg/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD97V4M/PIGoP588vD/uZ4c/AACAPwAAgD8AAIA/mqqwPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD/cvaQ/9uOzP4QNjz8XKKY/AACAP0n3mD81P6Y/2hCNPwAAgD8AAIA/AACAPwAAgD9FJYo/AACAPwAAgD8hLqc/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPw==","dtype":"float32","order":"little","shape":[94]},"GsiFinalObsErrorPassedQc::airTemperature":{"__ndarray__":"AACAPwAAgD8AAIA/AACAP+U4hz+9oJI/AACAP1Lthj8AAIA/jRfDPz75xz/LBtk/AACAP3rsqz8AAIA/AACAPwAAgD8AAIA/AACAP1O70z8AAIA/AACAP2VBhz8AAIA/HbSLPwAAgD8AAIA/AACAPwAAgD84H7s/AACAPxp3V0A05N8/J8+UPzcFgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/T+mXPwAAgD91mqI/AACAPzdzgj8AAIA/OxXBPwAAgD8AAIA/AACAP46F1j97V4M/wawtQLO4dEDdQKk/KVCQP9Q5gz9BwYA/yuv/PwAAgD8AAIA/YISdPwAAgD+4Lp8/rCeqP2tYgT8AAIA/LqqdPwAAgD9O8rM/e/cqQHv2uD8XKKY/AACAP0zywD/PxNQ/lTyWPwAAgD+5SJ4/UjmBP0AciD9FJYo/AACAP7OWjD9Njr0/KaCAPwAAgD8AAIA/AACAP1WKtD+MjLw/qhGnPw==","dtype":"float32","order":"little","shape":[94]},"GsiFinalObsErrorPassedQc_colon_colon_airTemperature":{"__ndarray__":"AACAPwAAgD8AAIA/AACAP+U4hz+9oJI/AACAP1Lthj8AAIA/jRfDPz75xz/LBtk/AACAP3rsqz8AAIA/AACAPwAAgD8AAIA/AACAP1O70z8AAIA/AACAP2VBhz8AAIA/HbSLPwAAgD8AAIA/AACAPwAAgD84H7s/AACAPxp3V0A05N8/J8+UPzcFgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/T+mXPwAAgD91mqI/AACAPzdzgj8AAIA/OxXBPwAAgD8AAIA/AACAP46F1j97V4M/wawtQLO4dEDdQKk/KVCQP9Q5gz9BwYA/yuv/PwAAgD8AAIA/YISdPwAAgD+4Lp8/rCeqP2tYgT8AAIA/LqqdPwAAgD9O8rM/e/cqQHv2uD8XKKY/AACAP0zywD/PxNQ/lTyWPwAAgD+5SJ4/UjmBP0AciD9FJYo/AACAP7OWjD9Njr0/KaCAPwAAgD8AAIA/AACAP1WKtD+MjLw/qhGnPw==","dtype":"float32","order":"little","shape":[94]}},"selected":{"id":"1150"},"selection_policy":{"id":"1171"}},"id":"1149","type":"ColumnDataSource"},{"attributes":{},"id":"1171","type":"UnionRenderers"},{"attributes":{"axis_label":"GsiFinalObsErrorPassedQc::airTemperature","coordinates":null,"formatter":{"id":"1159"},"group":null,"major_label_policy":{"id":"1160"},"ticker":{"id":"1129"}},"id":"1128","type":"LinearAxis"},{"attributes":{},"id":"1129","type":"BasicTicker"},{"attributes":{"axis":{"id":"1128"},"coordinates":null,"grid_line_color":null,"group":null,"ticker":null},"id":"1131","type":"Grid"},{"attributes":{},"id":"1160","type":"AllLabels"},{"attributes":{},"id":"1137","type":"PanTool"},{"attributes":{},"id":"1159","type":"BasicTickFormatter"},{"attributes":{"axis_label":"EffectiveErrorPassedQc::airTemperature","coordinates":null,"formatter":{"id":"1162"},"group":null,"major_label_policy":{"id":"1163"},"ticker":{"id":"1133"}},"id":"1132","type":"LinearAxis"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer00973","sizing_mode":"stretch_width"},"id":"1174","type":"Spacer"},{"attributes":{"axis":{"id":"1132"},"coordinates":null,"dimension":1,"grid_line_color":null,"group":null,"ticker":null},"id":"1135","type":"Grid"}],"root_ids":["1114"]},"title":"Bokeh Application","version":"2.4.3"}};
+    var render_items = [{"docid":"d59a6275-bd11-4dea-977b-15b20d01c730","root_ids":["1114"],"roots":{"1114":"5b1bf1ef-9118-43ea-a39a-a6baf14a51b7"}}];
+    root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+    for (const render_item of render_items) {
+      for (const root_id of render_item.root_ids) {
+	const id_el = document.getElementById(root_id)
+	if (id_el.children.length && (id_el.children[0].className === 'bk-root')) {
+	  const root_el = id_el.children[0]
+	  root_el.id = root_el.id + '-rendered'
+	}
+      }
+    }
+  }
+  if (root.Bokeh !== undefined && root.Bokeh.Panel !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined && root.Bokeh.Panel !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else if (document.readyState == "complete") {
+        attempts++;
+        if (attempts > 200) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 25, root)
+  }
+})(window);</script></div></div>
+</div>
+</section>
+</section>
+<div id="scroller-right">This web page was generated from a Jupyter notebook and not all interactivity will work on this website. <a href="https://raw.githubusercontent.com/asewnath/eva-docs/main/examples/../notebooks/eva_example.ipynb">Right click to download and run locally</a> for full Python-backed interactivity.</div><hr class="docutils"/>
+<p><a class="reference external" href="https://raw.githubusercontent.com/asewnath/eva-docs/main/notebooks/eva_example.ipynb">Right click to download this notebook from GitHub.</a></p>
+</section>
+</article>
+<footer class="bd-footer-article">
+<div class="footer-article-items footer-article__inner">
+<div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+<a class="left-prev" href="plot_tools/plot_tools_overview.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">Plot Tools Overview</p>
+</div>
+</a>
+<a class="right-next" href="API/index.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">API Documentation</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div></div>
+</div>
+</footer>
+</div>
+<div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage">
+<i class="fa-solid fa-list"></i> On this page
+  </div>
+<nav class="bd-toc-nav page-toc">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eva-interactive-example">EVA Interactive Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data-collections-for-amsu-a-and-aircraft">Load data collections for AMSU-A and Aircraft</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-demonstration-with-amsu-a">Arithmetic demonstration with AMSU-A</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accept-where-demonstration-with-aircraft">Accept where demonstration with Aircraft</a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item"><p class="last-updated">
+  Last updated on 2023-09-20.
+  <br/>
+</p></div>
+</div>
+<div class="footer-items__end">
+<div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+</div>
+</div>
+</footer>
+</body>
+</html>
